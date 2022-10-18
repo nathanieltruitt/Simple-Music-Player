@@ -7,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearcherComponent implements OnInit {
   keywordSearch!: string;
+  showResults = false;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSearch() {
+    if (this.keywordSearch !== '') {
+      setTimeout(() => {
+        this.showResults = true;
+      }, 2000);
+    } else {
+      this.showResults = false;
+    }
+  }
 }

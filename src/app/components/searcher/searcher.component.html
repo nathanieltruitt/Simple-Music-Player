@@ -1,19 +1,27 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="form-group">
-      <label for="track-searcher">Search for a track:</label>
-      <input
-        type="text"
-        id="track-searcher"
-        name="track-searcher"
-        class="form-control"
-        [(ngModel)]="keywordSearch"
-      />
-    </div>
-    <div class="dropdown">
-      <ul class="dropdown-menu">
-        <li class="dropdown-item">A test item!</li>
-      </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="track-searcher" class="form-label"
+          >Search for a track:</label
+        >
+        <input
+          type="text"
+          id="track-searcher"
+          name="track-searcher"
+          class="form-control"
+          [(ngModel)]="keywordSearch"
+          (keyup)="onSearch()"
+        />
+      </div>
+      <div class="dropdown mt-1">
+        <ul
+          class="dropdown-menu custom-dropdown-menu"
+          [class.show]="showResults"
+        >
+          <li class="dropdown-item">A test item!</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
