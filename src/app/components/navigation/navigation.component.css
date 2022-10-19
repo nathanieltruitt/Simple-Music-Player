@@ -1,0 +1,4 @@
+/* TODO: figure out getting navbar to display above overlay */
+:host {
+  z-index: 1000;
+}

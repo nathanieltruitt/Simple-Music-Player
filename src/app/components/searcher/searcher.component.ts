@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  debounceTime,
+  delay,
+  Observable,
+  Subject,
+  Subscription,
+  switchMap,
+} from 'rxjs';
+import { TrackSearchService } from 'src/app/services/data-access/track-search.service';
 
 @Component({
   selector: 'app-searcher',
@@ -6,20 +15,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searcher.component.css'],
 })
 export class SearcherComponent implements OnInit {
-  keywordSearch!: string;
-  showResults = false;
+  keywordSub!: Subscription;
+  keywordSearch$ = new Subject<string>();
+  results$!: Observable<any> | undefined;
 
-  constructor() {}
+  constructor(private trackSearchService: TrackSearchService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.keywordSub = this.keywordSearch$
+      .pipe(
+        debounceTime(500),
+        switchMap((x) => this.trackSearchService.getTrack(x))
+      )
+      .subscribe((response) => {
+        this.results$ = response;
+      });
+  }
 
-  onSearch() {
-    if (this.keywordSearch !== '') {
-      setTimeout(() => {
-        this.showResults = true;
-      }, 2000);
-    } else {
-      this.showResults = false;
+  onSearch(track: string) {
+    if (track === '') {
+      this.results$ = undefined;
+      return;
     }
+    this.keywordSearch$.next(track);
+  }
+
+  onOverlayClick() {
+    this.results$ = undefined;
+  }
+
+  ngOnDestroy() {
+    this.keywordSub.unsubscribe();
   }
 }

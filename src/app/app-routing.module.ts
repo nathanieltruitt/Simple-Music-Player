@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SearcherComponent } from './components/searcher/searcher.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
-    path: 'searcher',
-    component: SearcherComponent,
+    path: 'search',
+    component: SearchComponent,
   },
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const RoutingComponents = [SearcherComponent];
+export const RoutingComponents = [SearchComponent];

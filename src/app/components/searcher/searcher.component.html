@@ -1,3 +1,8 @@
+<div
+  class="overlay"
+  *ngIf="results$ !== undefined"
+  (click)="onOverlayClick()"
+></div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -10,16 +15,29 @@
           id="track-searcher"
           name="track-searcher"
           class="form-control"
-          [(ngModel)]="keywordSearch"
-          (keyup)="onSearch()"
+          ngModel
+          #trackSearcherRef
+          (keyup)="onSearch(trackSearcherRef.value)"
         />
       </div>
       <div class="dropdown mt-1">
         <ul
           class="dropdown-menu custom-dropdown-menu"
-          [class.show]="showResults"
+          [class.show]="results$ !== undefined"
         >
-          <li class="dropdown-item">A test item!</li>
+          <ng-container *ngIf="results$ | async as results">
+            <li
+              class="dropdown-item d-flex align-items-center p-3"
+              *ngFor="let item of results.tracks.items"
+            >
+              <img
+                style="width: 100px; height: auto"
+                src="{{ item.album.images[1].url }}"
+                alt="{{ item.name + ' album cover' }}"
+              />
+              <h3 class="ms-3">{{ item.name }}</h3>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>
