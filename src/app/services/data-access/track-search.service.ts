@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { of } from 'rxjs';
+import { catchError, Subject, of } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,6 +18,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TrackSearchService {
+  // TODO: error handling
   baseUrl = 'https://api.spotify.com/v1/';
   // * This service calls the spotify API to retrieve track information
 

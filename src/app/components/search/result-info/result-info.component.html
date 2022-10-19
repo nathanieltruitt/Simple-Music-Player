@@ -1,1 +1,21 @@
-<p>result-info works!</p>
+<ng-container *ngIf="result$ | async as res">
+  <div class="row">
+    <div class="col">
+      <img
+        class="preview-img"
+        src="{{ res.album.images[1].url }}"
+        alt="{{ res.name }} Image"
+      />
+    </div>
+    <div class="col">
+      <h1>{{ res.name }}</h1>
+      <p>Artists: {{ getArtistString(res.artists) }}</p>
+      <p>Album: {{ res.album.name }}</p>
+      <p>Release Date: {{ res.album.release_date }}</p>
+      <div class="btn-group">
+        <button class="btn btn-success">Add to Queue</button>
+        <button class="btn btn-primary">Add to Playlist</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

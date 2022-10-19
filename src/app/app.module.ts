@@ -9,6 +9,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { RoutingComponents } from './app-routing.module';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { ResultInfoComponent } from './components/search/result-info/result-info.component';
+import { BottomPlayerComponent } from './components/bottom-player/bottom-player.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ResultInfoComponent } from './components/search/result-info/result-info
     RoutingComponents,
     SearcherComponent,
     ResultInfoComponent,
+    BottomPlayerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
