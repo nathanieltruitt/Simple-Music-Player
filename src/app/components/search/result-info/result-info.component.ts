@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 
@@ -10,7 +11,10 @@ import { WebPlayerService } from 'src/app/services/data-access/web-player.servic
 })
 export class ResultInfoComponent implements OnInit {
   result$!: Observable<any>;
-  constructor(private selectedTrackService: SelectedTrackService, private webPlayerService: WebPlayerService) {}
+  constructor(
+    private selectedTrackService: SelectedTrackService,
+    private queueService: QueueService
+  ) {}
 
   ngOnInit(): void {
     this.result$ = this.selectedTrackService.selected;
@@ -32,7 +36,7 @@ export class ResultInfoComponent implements OnInit {
   }
 
   addToQueue(track: any) {
-    this.webPlayerService.addSong(track)
-    console.log(this.webPlayerService.playerStatus)
+    // this.webPlayerService.addSong(track)
+    this.queueService.addTrackToQueue(track);
   }
 }

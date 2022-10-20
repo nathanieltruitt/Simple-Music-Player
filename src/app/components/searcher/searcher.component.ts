@@ -8,6 +8,7 @@ import {
   Subscription,
   switchMap,
 } from 'rxjs';
+import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { TrackSearchService } from 'src/app/services/data-access/track-search.service';
 
@@ -25,7 +26,8 @@ export class SearcherComponent implements OnInit {
 
   constructor(
     private trackSearchService: TrackSearchService,
-    private selectedTrackService: SelectedTrackService
+    private selectedTrackService: SelectedTrackService,
+    private queueService: QueueService
   ) {}
 
   ngOnInit(): void {
@@ -58,11 +60,15 @@ export class SearcherComponent implements OnInit {
     this.results$ = undefined;
   }
 
-  onSelectTrack(track: object) {
+  onSelectTrack(track: any) {
     this.selectedTrackService.selectTrack(track);
     // set results back to undefined on track select
     this.results$ = undefined;
     this.searcherValue = '';
+  }
+
+  onAddTrackToQueue(track: any) {
+    this.queueService.addTrackToQueue(track);
   }
 
   ngOnDestroy() {
