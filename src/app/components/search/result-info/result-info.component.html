@@ -13,7 +13,9 @@
       <p>Album: {{ res.album.name }}</p>
       <p>Release Date: {{ res.album.release_date }}</p>
       <div class="btn-group">
-        <button class="btn btn-success">Add to Queue</button>
+        <button (click)="addToQueue(res)" class="btn btn-success">
+          Add to Queue
+        </button>
         <button class="btn btn-primary">Add to Playlist</button>
       </div>
     </div>

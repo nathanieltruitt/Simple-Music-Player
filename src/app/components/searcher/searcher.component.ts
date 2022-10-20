@@ -36,6 +36,9 @@ export class SearcherComponent implements OnInit {
       )
       .subscribe({
         next: (response) => (this.results$ = response),
+        error: (err) => {
+          this.resultsErr$ = err;
+        },
       });
   }
 
@@ -47,9 +50,9 @@ export class SearcherComponent implements OnInit {
     this.keywordSearch$.next(track);
   }
 
-  // test() {
-  //   this.results$?.subscribe((x) => console.log(x));
-  // }
+  test() {
+    this.results$?.subscribe((x) => console.log(x));
+  }
 
   onOverlayClick() {
     this.results$ = undefined;

@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { catchError, Subject, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, of, throwError } from 'rxjs';
+import { httpOptions } from 'src/app/spotifyHttpOptions';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    Authorization: 'Bearer ' + environment.accessToken,
-    'Content-Type': 'application/json',
-  }),
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     Authorization: 'Bearer ' + environment.accessToken,
+//     'Content-Type': 'application/json',
+//   }),
+// };
 
 @Injectable({
   providedIn: 'root',
@@ -26,11 +22,17 @@ export class TrackSearchService {
 
   getTrack(track: string) {
     return of(
-      this.http.get(
-        this.baseUrl +
-          `search?q=${encodeURIComponent(track)}&type=track&limit=5`,
-        httpOptions
-      )
+      this.http
+        .get(
+          this.baseUrl +
+            `search?derpq=${encodeURIComponent(track)}&type=track&limit=5`,
+          httpOptions
+        )
+        .pipe(
+          catchError((err) => {
+            return throwError(() => new Error(err.message));
+          })
+        )
     );
   }
 }
