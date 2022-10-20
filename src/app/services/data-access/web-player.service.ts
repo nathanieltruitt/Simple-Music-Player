@@ -25,6 +25,7 @@ export class WebPlayerService {
   }
 
   addSong(track: any) {
+    // TODO: get player API call to work
     this.http.post(
       `${this.baseUrl}player/queue?uri="${track.uri}"`,
       httpOptions

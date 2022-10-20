@@ -15,6 +15,7 @@ import { httpOptions } from 'src/app/spotifyHttpOptions';
 })
 export class TrackSearchService {
   // TODO: error handling
+  // TODO: need model for tracks
   baseUrl = 'https://api.spotify.com/v1/';
   // * This service calls the spotify API to retrieve track information
 
@@ -22,17 +23,11 @@ export class TrackSearchService {
 
   getTrack(track: string) {
     return of(
-      this.http
-        .get(
-          this.baseUrl +
-            `search?derpq=${encodeURIComponent(track)}&type=track&limit=5`,
-          httpOptions
-        )
-        .pipe(
-          catchError((err) => {
-            return throwError(() => new Error(err.message));
-          })
-        )
+      this.http.get(
+        this.baseUrl +
+          `search?q=${encodeURIComponent(track)}&type=track&limit=5`,
+        httpOptions
+      )
     );
   }
 }
