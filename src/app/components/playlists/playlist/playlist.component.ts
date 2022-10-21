@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./playlist.component.css'],
 })
 export class PlaylistComponent implements OnInit {
-  tracks!: any[];
+  @Input() tracks!: any[];
   @Input() name!: string;
   @Input() description!: string;
 

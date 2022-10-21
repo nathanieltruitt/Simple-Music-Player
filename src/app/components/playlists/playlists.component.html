@@ -1,6 +1,14 @@
 <button class="btn btn-primary">New Playlist</button>
 <div class="container">
   <div class="playlist-grid">
-    <app-playlist></app-playlist>
+    <ng-container *ngIf="playlists">
+      <app-playlist
+        *ngFor="let playlist of playlists"
+        [name]="playlist.name"
+        [description]="playlist.description"
+        [tracks]="playlist.tracks"
+      ></app-playlist>
+    </ng-container>
   </div>
+  <router-outlet></router-outlet>
 </div>
