@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlaylistComponent } from './components/playlists/playlist/playlist.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
-
+import { PlaylistModalComponent } from './components/playlists/playlist-modal/playlist-modal.component';
 import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
@@ -26,11 +25,11 @@ const routes: Routes = [
       },
       {
         path: 'detail/:id',
-        component: PlaylistComponent,
+        component: PlaylistModalComponent,
       },
       {
         path: 'detail/new',
-        component: PlaylistComponent,
+        component: PlaylistModalComponent,
       },
     ],
   },
@@ -41,4 +40,8 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const RoutingComponents = [SearchComponent];
+export const RoutingComponents = [
+  SearchComponent,
+  PlaylistModalComponent,
+  PlaylistsComponent,
+];

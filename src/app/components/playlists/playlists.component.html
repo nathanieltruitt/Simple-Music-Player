@@ -1,7 +1,7 @@
-<button class="btn btn-primary">New Playlist</button>
+<button class="btn btn-primary" (click)="onNewPlaylist()">New Playlist</button>
 <div class="container">
   <div class="playlist-grid">
-    <ng-container *ngIf="playlists">
+    <ng-container *ngIf="getPlaylists() | async as playlists">
       <app-playlist
         *ngFor="let playlist of playlists"
         [name]="playlist.name"

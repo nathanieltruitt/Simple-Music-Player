@@ -17,9 +17,9 @@ export class PlaylistComponent implements OnInit {
   previewImages(): any[] {
     let previewTracks: any[];
     if (this.tracks.length >= 4) {
-      previewTracks = this.tracks.slice(0, 3);
+      previewTracks = this.tracks.slice(0, 4);
     } else {
-      previewTracks = this.tracks.slice(0, 0);
+      previewTracks = this.tracks.slice(0, 1);
     }
     return previewTracks;
   }

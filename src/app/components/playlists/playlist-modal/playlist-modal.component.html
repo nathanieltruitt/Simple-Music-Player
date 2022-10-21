@@ -1,23 +1,66 @@
 <div style="display: inherit" class="modal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">New Playlist</h5>
         <button
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="onClose()"
         ></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <form class="mb-3" [formGroup]="playlistForm">
+          <!-- TODO: add validations -->
+          <div class="form-group">
+            <label class="form-label" for="name">Playlist Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="name"
+              name="name"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="description">Description</label>
+            <textarea
+              class="form-control"
+              formControlName="description"
+              name="description"
+              id="description"
+              cols="30"
+              rows="3"
+            ></textarea>
+          </div>
+        </form>
+        <hr />
+        <app-searcher></app-searcher>
+        <ng-container *ngIf="tracks.length > 0">
+          <div class="playlist-row">
+            <div class="playlist-col playlist-header"></div>
+            <div class="playlist-col" *ngFor="let track of tracks">
+              <img
+                class="playlist-img"
+                src="{{ track.album.images[1].url }}"
+                alt="{{ track.name }} Image"
+              />
+              <h4>{{ track.name }}</h4>
+              <div class="playlist-btns">
+                <button class="btn btn-sm btn-danger">X</button>
+                <button class="btn btn-sm btn-secondary">Queue</button>
+                <button class="btn btn-sm btn-success">Play</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+        <button (click)="onSave()" type="button" class="btn btn-primary">
+          Save
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
