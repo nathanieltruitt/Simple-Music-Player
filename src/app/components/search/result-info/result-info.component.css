@@ -1,6 +1,16 @@
+.default-img {
+  height: 300px;
+  width: 300px;
+}
+
 @media only screen and (max-width: 35.9375em) {
   .preview-img {
     height: auto;
+    width: 150px;
+  }
+
+  .default-img {
+    height: 150px;
     width: 150px;
   }
 }
@@ -10,11 +20,21 @@
     height: auto;
     width: 250px;
   }
+
+  .default-img {
+    height: 250px;
+    width: 250px;
+  }
 }
 
 @media only screen and (max-width: 28.25em) {
   .preview-img {
     height: auto;
+    width: 150px;
+  }
+
+  .default-img {
+    height: 150px;
     width: 150px;
   }
 }

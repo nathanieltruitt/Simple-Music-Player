@@ -19,3 +19,8 @@
   position: absolute;
   z-index: 3;
 }
+
+.searcher-form-group {
+  position: relative;
+  z-index: 3;
+}

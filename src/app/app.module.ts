@@ -11,6 +11,7 @@ import { SearcherComponent } from './components/searcher/searcher.component';
 import { ResultInfoComponent } from './components/search/result-info/result-info.component';
 import { BottomPlayerComponent } from './components/shared/bottom-player/bottom-player.component';
 import { QueueComponent } from './components/shared/queue/queue.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { QueueComponent } from './components/shared/queue/queue.component';
     ResultInfoComponent,
     BottomPlayerComponent,
     QueueComponent,
+    PlaylistsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

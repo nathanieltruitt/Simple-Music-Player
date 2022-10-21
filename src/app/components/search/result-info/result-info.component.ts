@@ -11,6 +11,7 @@ import { WebPlayerService } from 'src/app/services/data-access/web-player.servic
 })
 export class ResultInfoComponent implements OnInit {
   result$!: Observable<any>;
+  errorMessage!: string;
   constructor(
     private selectedTrackService: SelectedTrackService,
     private queueService: QueueService
@@ -38,5 +39,9 @@ export class ResultInfoComponent implements OnInit {
   addToQueue(track: any) {
     // this.webPlayerService.addSong(track)
     this.queueService.addTrackToQueue(track);
+  }
+
+  setErrorMessage(message: string) {
+    this.errorMessage = message;
   }
 }

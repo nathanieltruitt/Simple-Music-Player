@@ -1,4 +1,7 @@
-<ng-container *ngIf="result$ | async as res">
+<ng-container *ngIf="errorMessage">
+  <span class="alert-danger">{{ errorMessage }}</span>
+</ng-container>
+<ng-container *ngIf="result$ | async as res; else defaultSong">
   <div class="row">
     <div class="col">
       <img
@@ -21,3 +24,28 @@
     </div>
   </div>
 </ng-container>
+<ng-template #defaultSong>
+  <div class="row">
+    <div class="col">
+      <div
+        style="background-color: #c3c3c3"
+        class="default-img preview-img"
+      ></div>
+    </div>
+    <div class="col">
+      <h1>Artist Name</h1>
+      <p>Artists: Artists listed here</p>
+      <p>Album: Album name listed here</p>
+      <p>Release Date: Date listed here</p>
+      <div class="btn-group">
+        <button
+          (click)="setErrorMessage('Please select a song from the searcher!')"
+          class="btn btn-success"
+        >
+          Add to Queue
+        </button>
+        <button class="btn btn-primary">Add to Playlist</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
