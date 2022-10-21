@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
@@ -9,6 +9,7 @@ export class PlaylistComponent implements OnInit {
   @Input() tracks!: any[];
   @Input() name!: string;
   @Input() description!: string;
+  @Output() onDetailsEvent = new EventEmitter<void>();
 
   constructor() {}
 
@@ -22,5 +23,9 @@ export class PlaylistComponent implements OnInit {
       previewTracks = this.tracks.slice(0, 1);
     }
     return previewTracks;
+  }
+
+  onClick() {
+    this.onDetailsEvent.emit();
   }
 }

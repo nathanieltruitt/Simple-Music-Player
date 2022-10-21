@@ -2,7 +2,13 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New Playlist</h5>
+        <h5 class="modal-title">
+          {{
+            playlistForm.get("name")?.value
+              ? playlistForm.get("name")?.value
+              : "New Playlist"
+          }}
+        </h5>
         <button
           type="button"
           class="btn-close"

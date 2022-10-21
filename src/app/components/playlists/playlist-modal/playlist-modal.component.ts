@@ -24,10 +24,6 @@ export class PlaylistModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe((params) => {
-      console.log(params);
-    });
-
     this.selectedTrackSub = this.selectedTrackService.selected.subscribe(
       (track) => {
         this.tracks.push(track);
@@ -37,6 +33,20 @@ export class PlaylistModalComponent implements OnInit {
     this.playlistForm = this.fb.group({
       name: [''],
       description: [''],
+    });
+
+    this.routeSub = this.route.params.subscribe((params) => {
+      const playlist =
+        params['id'] !== 'new'
+          ? this.playlistService.playlists[params['id']]
+          : null;
+      if (!playlist) return;
+
+      this.playlistForm.setValue({
+        name: playlist.name,
+        description: playlist.description,
+      });
+      this.tracks = playlist.tracks;
     });
   }
 

@@ -3,10 +3,11 @@
   <div class="playlist-grid">
     <ng-container *ngIf="getPlaylists() | async as playlists">
       <app-playlist
-        *ngFor="let playlist of playlists"
+        *ngFor="let playlist of playlists; let i = index"
         [name]="playlist.name"
         [description]="playlist.description"
         [tracks]="playlist.tracks"
+        (onDetailsEvent)="openPlaylist(i)"
       ></app-playlist>
     </ng-container>
   </div>

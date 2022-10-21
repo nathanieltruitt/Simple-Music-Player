@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Playlist } from 'src/app/models/playlist.interface';
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
+import { Subject } from 'rxjs';
 
 @Component({
   templateUrl: './playlists.component.html',
@@ -9,6 +11,7 @@ import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 export class PlaylistsComponent implements OnInit {
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private playlistService: PlaylistService
   ) {}
 
@@ -16,11 +19,15 @@ export class PlaylistsComponent implements OnInit {
     this.getPlaylists().subscribe((x) => console.log(x));
   }
 
-  onNewPlaylist() {
+  onNewPlaylist(): void {
     this.router.navigate(['/playlists/detail/new']);
   }
 
-  getPlaylists() {
+  getPlaylists(): Subject<Playlist[]> {
     return this.playlistService.playlists$;
+  }
+
+  openPlaylist(idx: number): void {
+    this.router.navigate([`detail/${idx}`], { relativeTo: this.route });
   }
 }

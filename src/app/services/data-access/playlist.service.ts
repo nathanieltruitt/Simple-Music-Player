@@ -6,13 +6,17 @@ import { Playlist } from 'src/app/models/playlist.interface';
   providedIn: 'root',
 })
 export class PlaylistService {
-  private playlists: Playlist[] = [];
+  private _playlists: Playlist[] = [];
   playlists$ = new Subject<Playlist[]>();
 
   constructor() {}
 
+  get playlists() {
+    return this._playlists.slice();
+  }
+
   setPlaylists(playlist: Playlist) {
-    this.playlists.push(playlist);
-    this.playlists$.next(this.playlists.slice());
+    this._playlists.push(playlist);
+    this.playlists$.next(this._playlists.slice());
   }
 }
