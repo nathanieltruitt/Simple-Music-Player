@@ -1,0 +1,20 @@
+<div class="card" style="width: 18rem">
+  <div
+    [ngClass]="{ 'playlist-card-imgs': this.tracks.length >= 4 }"
+    class="card-img-top"
+  >
+    <img
+      class="card-img"
+      src="{{ track.album.images[1].url }}"
+      alt="{{ track.name }} Image"
+      *ngFor="let track of previewImages()"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ name }}</h5>
+    <p class="card-text">
+      {{ description }}
+    </p>
+    <a class="btn btn-primary">Details</a>
+  </div>
+</div>

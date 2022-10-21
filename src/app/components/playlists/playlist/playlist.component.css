@@ -1,0 +1,10 @@
+.playlist-card-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.card-img {
+  width: 3.125rem;
+  height: 3.125rem;
+}

@@ -12,6 +12,8 @@ import { ResultInfoComponent } from './components/search/result-info/result-info
 import { BottomPlayerComponent } from './components/shared/bottom-player/bottom-player.component';
 import { QueueComponent } from './components/shared/queue/queue.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
+import { PlaylistComponent } from './components/playlists/playlist/playlist.component';
+import { PlaylistModalComponent } from './components/playlists/playlist-modal/playlist-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PlaylistsComponent } from './components/playlists/playlists.component';
     BottomPlayerComponent,
     QueueComponent,
     PlaylistsComponent,
+    PlaylistComponent,
+    PlaylistModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
