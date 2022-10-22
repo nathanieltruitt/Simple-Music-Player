@@ -24,3 +24,22 @@
   position: relative;
   z-index: 3;
 }
+
+.loader {
+  margin: 1rem auto;
+  border: 10px solid #eaf0f6;
+  border-radius: 50%;
+  border-top: 10px solid #0094c9;
+  width: 50px;
+  height: 50px;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

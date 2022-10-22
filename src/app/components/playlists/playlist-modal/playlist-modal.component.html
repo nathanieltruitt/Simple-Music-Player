@@ -1,5 +1,5 @@
 <div style="display: inherit" class="modal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title me-auto">
@@ -52,27 +52,30 @@
         <hr />
         <app-searcher></app-searcher>
         <ng-container *ngIf="tracks.length > 0">
-          <div class="playlist-row">
-            <div class="playlist-col playlist-header"></div>
-            <div
-              class="playlist-col"
-              *ngFor="let track of tracks; let i = index"
-            >
-              <img
-                class="playlist-img"
-                src="{{ track.album.images[1].url }}"
-                alt="{{ track.name }} Image"
-              />
-              <h4>{{ track.name }}</h4>
-              <div class="playlist-btns">
-                <button
-                  (click)="onDeleteTrack(i)"
-                  class="btn btn-sm btn-danger"
-                >
-                  X
-                </button>
-                <button class="btn btn-sm btn-secondary">Queue</button>
-                <button class="btn btn-sm btn-success">Play</button>
+          <div class="playlist-table">
+            <div class="playlist-row">
+              <!-- <div class="playlist-col playlist-header"></div> -->
+              <div
+                class="playlist-col"
+                *ngFor="let track of tracks; let i = index"
+                [ngClass]="{ 'first-song': i === 0 }"
+              >
+                <img
+                  class="playlist-img"
+                  src="{{ track.album.images[1].url }}"
+                  alt="{{ track.name }} Image"
+                />
+                <h4>{{ track.name }}</h4>
+                <div class="playlist-btns">
+                  <button
+                    (click)="onDeleteTrack(i)"
+                    class="btn btn-sm btn-danger"
+                  >
+                    X
+                  </button>
+                  <button class="btn btn-sm btn-secondary">Queue</button>
+                  <button class="btn btn-sm btn-success">Play</button>
+                </div>
               </div>
             </div>
           </div>

@@ -2,11 +2,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   debounceTime,
-  delay,
+  BehaviorSubject,
   Observable,
   Subject,
   Subscription,
   switchMap,
+  tap,
+  delay,
 } from 'rxjs';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
@@ -23,6 +25,7 @@ export class SearcherComponent implements OnInit {
   keywordSearch$ = new Subject<string>();
   results$!: Observable<any> | undefined;
   resultsErr$!: Observable<HttpErrorResponse>;
+  loading$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private trackSearchService: TrackSearchService,
@@ -33,8 +36,15 @@ export class SearcherComponent implements OnInit {
   ngOnInit(): void {
     this.keywordSub = this.keywordSearch$
       .pipe(
+        tap(() => {
+          this.loading$.next(true);
+        }),
         debounceTime(500),
-        switchMap((x) => this.trackSearchService.getTrack(x))
+        switchMap((x) => this.trackSearchService.getTrack(x)),
+        delay(300),
+        tap(() => {
+          this.loading$.next(false);
+        })
       )
       .subscribe({
         next: (response) => (this.results$ = response),
@@ -58,6 +68,7 @@ export class SearcherComponent implements OnInit {
 
   onOverlayClick() {
     this.results$ = undefined;
+    this.searcherValue = '';
   }
 
   onSelectTrack(track: any) {

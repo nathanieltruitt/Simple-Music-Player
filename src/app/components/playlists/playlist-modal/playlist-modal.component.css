@@ -5,16 +5,14 @@
 .playlist-row {
   width: 100%;
   height: auto;
-  margin: 10px auto 0 auto;
+  margin: 0 auto 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
 }
 
 .playlist-col {
-  border-left: var(--player-default-border);
-  border-right: var(--player-default-border);
-  border-bottom: var(--player-default-border);
+  border-top: var(--player-default-border);
   padding: 0.75rem;
   display: grid;
   grid-template-rows: 1fr;
@@ -24,11 +22,9 @@
 
 .playlist-header {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: #8f8f8f;
   border: var(--player-default-border);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
   color: #fff;
 }
 
@@ -45,4 +41,16 @@
 
 .playlist-btns button {
   margin: 0 0.2rem;
+}
+
+.playlist-table {
+  border-left: var(--player-default-border);
+  border-right: var(--player-default-border);
+  border-bottom: var(--player-default-border);
+  border-radius: 8px;
+}
+
+.first-song {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }

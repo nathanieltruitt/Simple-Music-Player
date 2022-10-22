@@ -26,29 +26,32 @@
       <div class="dropdown mt-1">
         <ul
           class="dropdown-menu custom-dropdown-menu"
-          [class.show]="results$ !== undefined"
+          [class.show]="searcherValue"
         >
-          <ng-container *ngIf="results$ | async as results">
-            <div *ngFor="let item of results.tracks.items">
-              <li
-                class="dropdown-item d-flex align-items-center p-3"
-                (click)="onSelectTrack(item)"
-              >
-                <img
-                  style="width: 100px; height: auto"
-                  src="{{ item.album.images[1].url }}"
-                  alt="{{ item.name + ' album cover' }}"
-                />
-                <h3 class="ms-3 me-auto">{{ item.name }}</h3>
-              </li>
-              <button
-                (click)="onAddTrackToQueue(item)"
-                class="btn btn-sm btn-success"
-              >
-                Queue
-              </button>
-            </div>
-          </ng-container>
+          <div *ngIf="loading$ | async; else results" class="loader"></div>
+          <ng-template #results>
+            <ng-container *ngIf="results$ | async as results">
+              <div *ngFor="let item of results.tracks.items">
+                <li
+                  class="dropdown-item d-flex align-items-center p-3"
+                  (click)="onSelectTrack(item)"
+                >
+                  <img
+                    style="width: 100px; height: auto"
+                    src="{{ item.album.images[1].url }}"
+                    alt="{{ item.name + ' album cover' }}"
+                  />
+                  <h3 class="ms-3 me-auto">{{ item.name }}</h3>
+                </li>
+                <button
+                  (click)="onAddTrackToQueue(item)"
+                  class="btn btn-sm btn-success"
+                >
+                  Queue
+                </button>
+              </div>
+            </ng-container>
+          </ng-template>
         </ul>
       </div>
     </div>
