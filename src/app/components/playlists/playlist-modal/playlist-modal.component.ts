@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-playlist-modal',
@@ -15,6 +16,8 @@ export class PlaylistModalComponent implements OnInit {
   routeSub!: Subscription;
   playlistForm!: FormGroup;
   tracks: any[] = [];
+  faTrashCan = faTrashCan;
+  playlistId!: number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -41,6 +44,7 @@ export class PlaylistModalComponent implements OnInit {
           ? this.playlistService.playlists[params['id']]
           : null;
       if (!playlist) return;
+      this.playlistId = Number(params['id']);
 
       this.playlistForm.setValue({
         name: playlist.name,
@@ -60,6 +64,15 @@ export class PlaylistModalComponent implements OnInit {
 
   onClose() {
     this.router.navigate(['/playlists']);
+  }
+
+  onDelete() {
+    this.playlistService.deletePlaylist(this.playlistId);
+    this.router.navigate(['/playlists']);
+  }
+
+  onDeleteTrack(idx: number) {
+    this.tracks.splice(idx, 1)
   }
 
   ngOnDestroy() {

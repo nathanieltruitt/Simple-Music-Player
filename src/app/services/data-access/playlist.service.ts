@@ -19,4 +19,9 @@ export class PlaylistService {
     this._playlists.push(playlist);
     this.playlists$.next(this._playlists.slice());
   }
+
+  deletePlaylist(idx: number) {
+    this._playlists.splice(idx, 1);
+    this.playlists$.next(this._playlists.slice());
+  }
 }

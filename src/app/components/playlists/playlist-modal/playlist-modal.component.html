@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">
+        <h5 class="modal-title me-auto">
           {{
             playlistForm.get("name")?.value
               ? playlistForm.get("name")?.value
@@ -10,9 +10,16 @@
           }}
         </h5>
         <button
+          (click)="onDelete()"
           type="button"
+          class="btn btn-outline-danger"
+        >
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+        </button>
+        <button
+          type="button"
+          style="margin-left: 0.7rem"
           class="btn-close"
-          data-bs-dismiss="modal"
           aria-label="Close"
           (click)="onClose()"
         ></button>
@@ -47,7 +54,10 @@
         <ng-container *ngIf="tracks.length > 0">
           <div class="playlist-row">
             <div class="playlist-col playlist-header"></div>
-            <div class="playlist-col" *ngFor="let track of tracks">
+            <div
+              class="playlist-col"
+              *ngFor="let track of tracks; let i = index"
+            >
               <img
                 class="playlist-img"
                 src="{{ track.album.images[1].url }}"
@@ -55,7 +65,12 @@
               />
               <h4>{{ track.name }}</h4>
               <div class="playlist-btns">
-                <button class="btn btn-sm btn-danger">X</button>
+                <button
+                  (click)="onDeleteTrack(i)"
+                  class="btn btn-sm btn-danger"
+                >
+                  X
+                </button>
                 <button class="btn btn-sm btn-secondary">Queue</button>
                 <button class="btn btn-sm btn-success">Play</button>
               </div>

@@ -13,6 +13,7 @@ import { ResultInfoComponent } from './components/search/result-info/result-info
 import { BottomPlayerComponent } from './components/shared/bottom-player/bottom-player.component';
 import { QueueComponent } from './components/shared/queue/queue.component';
 import { PlaylistComponent } from './components/playlists/playlist/playlist.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PlaylistComponent } from './components/playlists/playlist/playlist.comp
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

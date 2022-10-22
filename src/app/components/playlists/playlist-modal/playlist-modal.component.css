@@ -3,8 +3,8 @@
 }
 
 .playlist-row {
-  width: 46.25rem;
-  height: 3.125rem;
+  width: 100%;
+  height: auto;
   margin: 10px auto 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -23,8 +23,8 @@
 }
 
 .playlist-header {
-  width: 46.25rem;
-  height: 3.125rem;
+  width: 100%;
+  height: auto;
   background-color: #8f8f8f;
   border: var(--player-default-border);
   border-top-left-radius: 8px;
@@ -35,6 +35,7 @@
 .playlist-img {
   width: 6.25rem;
   height: auto;
+  margin-right: 10px;
 }
 
 .playlist-btns {

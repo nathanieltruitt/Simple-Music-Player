@@ -15,9 +15,7 @@ export class PlaylistsComponent implements OnInit {
     private playlistService: PlaylistService
   ) {}
 
-  ngOnInit(): void {
-    this.getPlaylists().subscribe((x) => console.log(x));
-  }
+  ngOnInit(): void {}
 
   onNewPlaylist(): void {
     this.router.navigate(['/playlists/detail/new']);
