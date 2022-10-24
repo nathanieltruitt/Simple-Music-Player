@@ -3,3 +3,9 @@
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
   padding: 0.75rem;
 }
+
+.smp-queue-grid {
+  display: grid;
+  grid-template-columns: 10% 2fr 1fr 1fr;
+  align-items: center;
+}

@@ -72,6 +72,7 @@ export class SearcherComponent implements OnInit {
   }
 
   onSelectTrack(track: any) {
+    console.log(track);
     this.selectedTrackService.selectTrack(track);
     // set results back to undefined on track select
     this.results$ = undefined;
