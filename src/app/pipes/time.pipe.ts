@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimePipe implements PipeTransform {
   transform(ms: string): string {
     const msNum = Number(ms);
-    const seconds = msNum / 1000;
-    const minutes = msNum / (1000 * 60);
+    const minutes = Math.floor(msNum / (1000 * 60));
+    const seconds = Math.floor(msNum / 1000 - minutes * 60);
 
     const secondsString = seconds < 10 ? `0${seconds}` : seconds.toString();
     const minutesString = minutes < 10 ? `0${minutes}` : minutes.toString();

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { last, Subscription } from 'rxjs';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
   selector: 'app-playlist-modal',
   templateUrl: './playlist-modal.component.html',
@@ -14,10 +13,12 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 export class PlaylistModalComponent implements OnInit {
   selectedTrackSub!: Subscription;
   routeSub!: Subscription;
+  modalSub!: Subscription;
   playlistForm!: FormGroup;
   tracks: any[] = [];
   faTrashCan = faTrashCan;
   playlistId!: number;
+  lastNum!: number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -72,11 +73,12 @@ export class PlaylistModalComponent implements OnInit {
   }
 
   onDeleteTrack(idx: number) {
-    this.tracks.splice(idx, 1)
+    this.tracks.splice(idx, 1);
   }
 
   ngOnDestroy() {
     this.selectedTrackSub.unsubscribe();
     this.routeSub.unsubscribe();
+    this.modalSub.unsubscribe();
   }
 }

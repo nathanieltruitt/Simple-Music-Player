@@ -16,7 +16,9 @@
       <h4>{{ item.name }}</h4>
       <p>{{ item.album.name }}</p>
     </div>
-    <p>{{ item.duration_ms }}</p>
+    <div class="d-flex justify-content-center">
+      <p>{{ item.duration_ms | time }}</p>
+    </div>
     <div>
       <button (click)="removeItem(i)" class="btn btn-danger btn-sm">X</button>
     </div>
