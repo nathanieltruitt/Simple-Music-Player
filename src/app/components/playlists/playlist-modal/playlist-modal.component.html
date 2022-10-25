@@ -28,6 +28,7 @@
         <div class="modal-body">
           <form class="mb-3" [formGroup]="playlistForm">
             <!-- TODO: add validations -->
+            <!-- TODO: add custom validation for attempting to create a playlist with the same name. -->
             <div class="form-group">
               <label class="form-label" for="name">Playlist Name</label>
               <input
@@ -36,7 +37,24 @@
                 id="name"
                 name="name"
                 formControlName="name"
+                [class.is-invalid]="
+                  playlistForm.get('name')?.invalid &&
+                  playlistForm.get('name')?.touched
+                "
               />
+              <span
+                *ngIf="
+                  playlistForm.get('name')?.hasError('required') &&
+                  playlistForm.get('name')?.touched
+                "
+                class="text-danger"
+                >Please enter a playlist name.</span
+              >
+              <span
+                *ngIf="playlistForm.get('name')?.hasError('forbiddenName')"
+                class="text-danger"
+                >Existing playlist already has that name</span
+              >
             </div>
             <div class="form-group">
               <label class="form-label" for="description">Description</label>
@@ -83,7 +101,12 @@
           </ng-container>
         </div>
         <div class="modal-footer">
-          <button (click)="onSave()" type="button" class="btn btn-primary">
+          <button
+            [disabled]="!playlistForm.valid"
+            (click)="onSave()"
+            type="button"
+            class="btn btn-primary"
+          >
             Save
           </button>
         </div>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { last, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-playlist-modal',
   templateUrl: './playlist-modal.component.html',
@@ -13,7 +14,6 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 export class PlaylistModalComponent implements OnInit {
   selectedTrackSub!: Subscription;
   routeSub!: Subscription;
-  modalSub!: Subscription;
   playlistForm!: FormGroup;
   tracks: any[] = [];
   faTrashCan = faTrashCan;
@@ -35,8 +35,8 @@ export class PlaylistModalComponent implements OnInit {
     );
 
     this.playlistForm = this.fb.group({
-      name: [''],
-      description: [''],
+      name: ['', [Validators.required]],
+      description: ['', Validators.required],
     });
 
     this.routeSub = this.route.params.subscribe((params) => {
@@ -44,7 +44,16 @@ export class PlaylistModalComponent implements OnInit {
         params['id'] !== 'new'
           ? this.playlistService.playlists[params['id']]
           : null;
-      if (!playlist) return;
+      if (!playlist) {
+        this.playlistForm
+          .get('name')
+          ?.addValidators(
+            this.playlistService.forbiddenNameValidator(
+              this.playlistId !== undefined
+            )
+          );
+        return;
+      }
       this.playlistId = Number(params['id']);
 
       this.playlistForm.setValue({
@@ -52,15 +61,26 @@ export class PlaylistModalComponent implements OnInit {
         description: playlist.description,
       });
       this.tracks = playlist.tracks;
+      this.playlistForm
+        .get('name')
+        ?.addValidators(
+          this.playlistService.forbiddenNameValidator(
+            this.playlistId !== undefined
+          )
+        );
     });
   }
 
   onSave() {
-    this.playlistService.setPlaylists({
-      name: this.playlistForm.get('name')?.value,
-      description: this.playlistForm.get('description')?.value,
-      tracks: this.tracks,
-    });
+    this.playlistService.setPlaylists(
+      {
+        name: this.playlistForm.get('name')?.value,
+        description: this.playlistForm.get('description')?.value,
+        tracks: this.tracks,
+      },
+      this.playlistId
+    );
+    this.router.navigate(['/playlists']);
   }
 
   onClose() {
@@ -76,9 +96,13 @@ export class PlaylistModalComponent implements OnInit {
     this.tracks.splice(idx, 1);
   }
 
+  onCheckPlaylists(playlist: string): boolean {
+    if (!this.playlistId) return false;
+    return this.playlistService.checkPlaylists(playlist);
+  }
+
   ngOnDestroy() {
     this.selectedTrackSub.unsubscribe();
     this.routeSub.unsubscribe();
-    this.modalSub.unsubscribe();
   }
 }
