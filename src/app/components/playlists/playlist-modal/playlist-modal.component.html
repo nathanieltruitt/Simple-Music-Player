@@ -102,7 +102,7 @@
         </div>
         <div class="modal-footer">
           <button
-            [disabled]="!playlistForm.valid"
+            [disabled]="!playlistForm.valid || tracks.length === 0"
             (click)="onSave()"
             type="button"
             class="btn btn-primary"
