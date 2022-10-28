@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-result-info',
@@ -12,9 +13,11 @@ import { WebPlayerService } from 'src/app/services/data-access/web-player.servic
 export class ResultInfoComponent implements OnInit {
   result$!: Observable<any>;
   errorMessage!: string;
+  faPlay = faPlay;
   constructor(
     private selectedTrackService: SelectedTrackService,
-    private queueService: QueueService
+    private queueService: QueueService,
+    private webPlayerService: WebPlayerService
   ) {}
 
   ngOnInit(): void {
@@ -43,5 +46,13 @@ export class ResultInfoComponent implements OnInit {
 
   setErrorMessage(message: string) {
     this.errorMessage = message;
+  }
+
+  playSong(track: any) {
+    this.webPlayerService.addSong(track);
+  }
+
+  test() {
+    console.log(this.webPlayerService.playerStatus);
   }
 }

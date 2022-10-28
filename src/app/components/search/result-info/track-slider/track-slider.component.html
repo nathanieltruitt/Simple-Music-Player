@@ -1,0 +1,23 @@
+<div
+  class="slidercontainer d-flex justify-content-center align-items-center mb-4"
+>
+  <span class="me-2" *ngIf="playerState; else defaultStart">{{
+    (sliderValue * 1000).toString() | time
+  }}</span>
+  <ng-template #defaultStart><span class="me-2">00:00</span></ng-template>
+  <!-- <input
+    type="range"
+    [max]="sliderLength"
+    [value]="sliderValue"
+    class="slider"
+    id="mySlider"
+    disabled
+  /> -->
+  <div class="slider">
+    <div class="progress" [ngStyle]="{ width: getProgress() + '%' }"></div>
+  </div>
+  <span class="ms-2" *ngIf="result; else defaultEnd">{{
+    result.duration_ms | time
+  }}</span>
+  <ng-template #defaultEnd><span class="ms-2">00:00</span></ng-template>
+</div>

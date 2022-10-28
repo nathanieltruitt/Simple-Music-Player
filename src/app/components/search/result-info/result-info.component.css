@@ -1,9 +1,31 @@
-.default-img {
-  height: 300px;
-  width: 300px;
+.player {
+  background-color: #fff;
+  padding: 20px;
 }
 
-@media only screen and (max-width: 35.9375em) {
+.track-font {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.artist-font {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.default-img {
+  height: 6.25rem;
+  width: 6.25rem;
+  border-radius: 10px;
+}
+
+.preview-img {
+  height: 6.25rem;
+  width: 6.25rem;
+  border-radius: 10px;
+}
+
+/* @media only screen and (max-width: 35.9375em) {
   .preview-img {
     height: auto;
     width: 150px;
@@ -37,4 +59,4 @@
     height: 150px;
     width: 150px;
   }
-}
+} */

@@ -2,50 +2,65 @@
   <span class="alert-danger">{{ errorMessage }}</span>
 </ng-container>
 <ng-container *ngIf="result$ | async as res; else defaultSong">
-  <div class="row">
-    <div class="col">
-      <img
-        class="preview-img"
-        src="{{ res.album.images[1].url }}"
-        alt="{{ res.name }} Image"
-      />
+  <div class="player">
+    <div class="row">
+      <div class="col-sm-12 d-flex flex-column align-items-center">
+        <img
+          class="preview-img"
+          src="{{ res.album.images[1].url }}"
+          alt="{{ res.name }} Image"
+        />
+        <h1 class="track-font">{{ res.name }}</h1>
+        <p class="artist-font">{{ getArtistString(res.artists) }}</p>
+      </div>
     </div>
-    <div class="col">
-      <h1>{{ res.name }}</h1>
-      <p>Artists: {{ getArtistString(res.artists) }}</p>
-      <p>Album: {{ res.album.name }}</p>
-      <p>Release Date: {{ res.album.release_date }}</p>
-      <div class="btn-group">
-        <button (click)="addToQueue(res)" class="btn btn-success">
-          Add to Queue
-        </button>
-        <button class="btn btn-primary">Add to Playlist</button>
+    <div class="row">
+      <div class="col">
+        <app-track-slider [result]="res"></app-track-slider>
+        <div class="btn-group">
+          <button (click)="playSong(res)" class="btn btn-success">Play</button>
+          <button (click)="addToQueue(res)" class="btn btn-info">
+            Add to Queue
+          </button>
+          <!-- TODO: add functionality -->
+          <button class="btn btn-primary">Add to Playlist</button>
+        </div>
       </div>
     </div>
   </div>
 </ng-container>
 <ng-template #defaultSong>
-  <div class="row">
-    <div class="col">
-      <div
-        style="background-color: #c3c3c3"
-        class="default-img preview-img"
-      ></div>
+  <div class="player">
+    <div class="row">
+      <div class="col d-flex flex-column align-items-center">
+        <div
+          style="background-color: #c3c3c3"
+          class="default-img preview-img"
+        ></div>
+        <h1 class="track-font">Track Name</h1>
+        <p class="artist-font">Artist</p>
+      </div>
     </div>
-    <div class="col">
-      <h1>Artist Name</h1>
-      <p>Artists: Artists listed here</p>
-      <p>Album: Album name listed here</p>
-      <p>Release Date: Date listed here</p>
-      <div class="btn-group">
-        <button
-          (click)="setErrorMessage('Please select a song from the searcher!')"
-          class="btn btn-success"
-        >
-          Add to Queue
-        </button>
-        <button class="btn btn-primary">Add to Playlist</button>
+    <div class="row">
+      <div class="col">
+        <app-track-slider></app-track-slider>
+        <div class="btn-group">
+          <button
+            class="btn btn-success"
+            (click)="setErrorMessage('Please select a song from the searcher!')"
+          >
+            Play
+          </button>
+          <button
+            (click)="setErrorMessage('Please select a song from the searcher!')"
+            class="btn btn-info"
+          >
+            Add to Queue
+          </button>
+          <button class="btn btn-primary">Add to Playlist</button>
+        </div>
       </div>
     </div>
   </div>
 </ng-template>
+<button (click)="test()">Click Me</button>

@@ -27,8 +27,6 @@
         </div>
         <div class="modal-body">
           <form class="mb-3" [formGroup]="playlistForm">
-            <!-- TODO: add validations -->
-            <!-- TODO: add custom validation for attempting to create a playlist with the same name. -->
             <div class="form-group">
               <label class="form-label" for="name">Playlist Name</label>
               <input
@@ -65,7 +63,19 @@
                 id="description"
                 cols="30"
                 rows="3"
+                [class.is-invalid]="
+                  playlistForm.get('description')?.invalid &&
+                  playlistForm.get('description')?.touched
+                "
               ></textarea>
+              <span
+                *ngIf="
+                  playlistForm.get('description')?.hasError('required') &&
+                  playlistForm.get('description')?.touched
+                "
+                class="text-danger"
+                >Please enter a description.</span
+              >
             </div>
           </form>
           <hr />

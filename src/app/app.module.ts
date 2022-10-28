@@ -17,6 +17,7 @@ import { QueueComponent } from './components/shared/queue/queue.component';
 import { PlaylistComponent } from './components/playlists/playlist/playlist.component';
 
 import { TimePipe } from './pipes/time.pipe';
+import { TrackSliderComponent } from './components/search/result-info/track-slider/track-slider.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TimePipe } from './pipes/time.pipe';
     QueueComponent,
     PlaylistComponent,
     TimePipe,
+    TrackSliderComponent,
   ],
   imports: [
     BrowserModule,
