@@ -1,11 +1,57 @@
-.queue-row {
-  margin-bottom: 25px;
+.smp-container {
+  background-color: #fff;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-radius: 10px;
+  height: 27.425rem;
+}
+
+/* .queue-row:hover {
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-  padding: 0.75rem;
+} */
+
+.queue-row {
+  border-radius: 10px;
 }
 
 .smp-queue-grid {
   display: grid;
-  grid-template-columns: 10% 2fr 1fr 1fr;
+  grid-template-columns: 10% 1fr 1fr 1fr 1fr;
+}
+
+.smp-queue-row {
   align-items: center;
+}
+
+/* .row-group {
+  margin-left: 3rem;
+} */
+
+/* Headers */
+.header {
+  font-size: 0.8rem;
+}
+
+.special-text {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.smp-queue-close-btn {
+  position: relative;
+  left: 80%;
+}
+
+.queue-text {
+  font-size: 0.8rem;
+}
+
+/* Play button */
+.play-select {
+  border-radius: 50%;
+}
+
+/* class is applied if this is the current song playing */
+.playing {
+  box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.5);
+  transition: box-shadow ease 0.3s;
 }

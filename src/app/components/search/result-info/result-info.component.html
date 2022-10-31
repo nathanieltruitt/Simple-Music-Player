@@ -17,13 +17,16 @@
     <div class="row">
       <div class="col">
         <app-track-slider [result]="res"></app-track-slider>
-        <div class="btn-group">
-          <button (click)="playSong(res)" class="btn btn-success">Play</button>
-          <button (click)="addToQueue(res)" class="btn btn-info">
-            Add to Queue
+        <div class="buttons d-flex justify-content-center align-items-center">
+          <!-- TODO: add functionality to rev and forward buttons -->
+          <fa-icon class="reverse-button fa-lg" [icon]="faForward"></fa-icon>
+          <button
+            class="btn btn-outline-success play-button"
+            (click)="playSong(res)"
+          >
+            <fa-icon class="fa-2xl" [icon]="faPlay"></fa-icon>
           </button>
-          <!-- TODO: add functionality -->
-          <button class="btn btn-primary">Add to Playlist</button>
+          <fa-icon class="forward-button fa-lg" [icon]="faForward"></fa-icon>
         </div>
       </div>
     </div>
@@ -44,23 +47,24 @@
     <div class="row">
       <div class="col">
         <app-track-slider></app-track-slider>
-        <div class="btn-group">
+        <div class="buttons d-flex justify-content-center align-items-center">
+          <fa-icon class="reverse-button fa-lg" [icon]="faForward"></fa-icon>
           <button
-            class="btn btn-success"
+            class="btn btn-outline-success play-button"
             (click)="setErrorMessage('Please select a song from the searcher!')"
           >
-            Play
+            <fa-icon class="fa-2xl" [icon]="faPlay"></fa-icon>
           </button>
-          <button
-            (click)="setErrorMessage('Please select a song from the searcher!')"
-            class="btn btn-info"
-          >
-            Add to Queue
-          </button>
-          <button class="btn btn-primary">Add to Playlist</button>
+          <fa-icon class="forward-button fa-lg" [icon]="faForward"></fa-icon>
         </div>
+        <!-- <button
+          (click)="setErrorMessage('Please select a song from the searcher!')"
+          class="btn btn-info"
+        >
+          Add to Queue
+        </button>
+        <button class="btn btn-primary">Add to Playlist</button> -->
       </div>
     </div>
   </div>
 </ng-template>
-<button (click)="test()">Click Me</button>

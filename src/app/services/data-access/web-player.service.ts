@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WebPlayerService {
   // private baseUrl = 'https://api.spotify.com/v1/me/';
+  currentTrack!: string;
   private _spotify = new spotifyPlayer('Simple Music Player');
   // * uses the web player API provided by _spotify to play songs in the browser.
 

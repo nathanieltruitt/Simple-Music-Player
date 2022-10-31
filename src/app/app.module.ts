@@ -18,6 +18,7 @@ import { PlaylistComponent } from './components/playlists/playlist/playlist.comp
 
 import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/result-info/track-slider/track-slider.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TrackSliderComponent } from './components/search/result-info/track-slid
     PlaylistComponent,
     TimePipe,
     TrackSliderComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 .player {
   background-color: #fff;
-  padding: 20px;
+  padding: 5rem;
+  border-radius: 10px;
 }
 
 .track-font {
@@ -17,12 +18,14 @@
   height: 6.25rem;
   width: 6.25rem;
   border-radius: 10px;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
 }
 
 .preview-img {
   height: 6.25rem;
   width: 6.25rem;
   border-radius: 10px;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
 }
 
 /* @media only screen and (max-width: 35.9375em) {
@@ -60,3 +63,31 @@
     width: 150px;
   }
 } */
+
+/* BUTTONS */
+.play-button {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.reverse-button {
+  transform: rotate(-180deg);
+  cursor: pointer;
+  color: rgb(92, 92, 92);
+}
+
+.reverse-button:active {
+  color: black;
+}
+
+.forward-button {
+  cursor: pointer;
+  color: rgb(92, 92, 92);
+}
+
+.forward-button:active {
+  color: black;
+}

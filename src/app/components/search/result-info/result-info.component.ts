@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faForward } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-result-info',
@@ -14,6 +14,7 @@ export class ResultInfoComponent implements OnInit {
   result$!: Observable<any>;
   errorMessage!: string;
   faPlay = faPlay;
+  faForward = faForward;
   constructor(
     private selectedTrackService: SelectedTrackService,
     private queueService: QueueService,

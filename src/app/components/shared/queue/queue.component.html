@@ -1,26 +1,55 @@
 <!-- TODO: improve queue table look -->
-<div class="row queue-row smp-queue-grid">
-  <h2>#</h2>
-  <h2>Title</h2>
-  <div class="d-flex justify-content-center">
-    <h2>Length</h2>
+<div class="smp-container">
+  <div class="smp-queue">
+    <div class="ps-3 row mb-4">
+      <div class="row-group smp-queue-grid">
+        <h2 class="header">#</h2>
+        <h2 class="header">Title</h2>
+        <h2 class="header">Album</h2>
+        <h2 class="header">Length</h2>
+      </div>
+    </div>
+    <ng-container *ngIf="getQueue() | async as queue">
+      <div
+        class="queue-row p-3"
+        [ngClass]="{ playing: item.name === getCurrentTrack() }"
+        *ngFor="let item of queue; let i = index"
+      >
+        <div class="row-group smp-queue-grid smp-queue-row">
+          <div>
+            <span>{{ i }}</span>
+            <button
+              class="play-select btn btn-outline-success"
+              (click)="playSong(item)"
+            >
+              <fa-icon
+                [icon]="
+                  item.name === getCurrentTrack() && isPlaying
+                    ? faPause
+                    : faPlay
+                "
+              ></fa-icon>
+            </button>
+          </div>
+          <p class="special-text queue-text">
+            {{ item.name }}
+          </p>
+          <p class="special-text queue-text">
+            {{ item.album.name }}
+          </p>
+          <p class="ps-2 queue-text">
+            {{ item.duration_ms | time }}
+          </p>
+          <div>
+            <button
+              (click)="removeItem(i)"
+              class="btn btn-danger btn-sm smp-queue-close-btn"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
-<ng-container *ngIf="getQueue() | async as queue">
-  <div
-    class="queue-row smp-queue-grid"
-    *ngFor="let item of queue; let i = index"
-  >
-    <div>{{ i }}</div>
-    <div class="d-flex flex-column justify-content-center">
-      <h4>{{ item.name }}</h4>
-      <p>{{ item.album.name }}</p>
-    </div>
-    <div class="d-flex justify-content-center">
-      <p>{{ item.duration_ms | time }}</p>
-    </div>
-    <div>
-      <button (click)="removeItem(i)" class="btn btn-danger btn-sm">X</button>
-    </div>
-  </div>
-</ng-container>
