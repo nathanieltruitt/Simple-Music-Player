@@ -7,9 +7,12 @@
   <div class="row">
     <div class="col-md-12 searcher-container">
       <!-- TODO: work on getting error handling -->
-      <span class="alert-danger" *ngIf="resultsErr$ | async as resultsErr">{{
-        resultsErr.message
-      }}</span>
+      <!-- TODO: need to refactor searcher results dropdown -->
+      <span
+        class="alert alert-danger"
+        *ngIf="resultsErr$ | async as resultsErr"
+        >{{ resultsErr }}</span
+      >
       <div class="form-group searcher-form-group">
         <input
           type="text"

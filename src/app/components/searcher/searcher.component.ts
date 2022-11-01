@@ -9,6 +9,10 @@ import {
   switchMap,
   tap,
   delay,
+  catchError,
+  throwError,
+  map,
+  of,
 } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
@@ -48,11 +52,17 @@ export class SearcherComponent implements OnInit {
         })
       )
       .subscribe({
-        next: (response) => (this.results$ = response),
+        next: (response) => (this.results$ = of(response)),
         error: (err) => {
-          this.resultsErr$ = err;
+          this.resultsErr$ = of(err);
+          this.loading$.next(false);
+          this.searcherValue = '';
         },
       });
+  }
+
+  test() {
+    this.results$?.subscribe((x) => console.log(x));
   }
 
   onSearch(track: string) {
