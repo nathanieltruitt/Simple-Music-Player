@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Track } from 'src/app/models/track.interface';
 
 @Component({
   selector: 'app-playlist-modal',
@@ -15,7 +16,7 @@ export class PlaylistModalComponent implements OnInit {
   selectedTrackSub!: Subscription;
   routeSub!: Subscription;
   playlistForm!: FormGroup;
-  tracks: any[] = [];
+  tracks: Track[] = [];
   faTrashCan = faTrashCan;
   playlistId!: number;
   lastNum!: number;

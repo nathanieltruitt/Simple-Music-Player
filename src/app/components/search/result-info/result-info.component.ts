@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 import { faPlay, faForward } from '@fortawesome/free-solid-svg-icons';
+import { Track } from 'src/app/models/track.interface';
 
 @Component({
   selector: 'app-result-info',
@@ -11,7 +12,7 @@ import { faPlay, faForward } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./result-info.component.css'],
 })
 export class ResultInfoComponent implements OnInit {
-  result$!: Observable<any>;
+  result$!: Observable<Track>;
   errorMessage!: string;
   faPlay = faPlay;
   faForward = faForward;
@@ -25,6 +26,7 @@ export class ResultInfoComponent implements OnInit {
     this.result$ = this.selectedTrackService.selected;
   }
 
+  // TODO: need model for artist
   getArtistString(artists: any[]) {
     let artistStr;
     if (artists.length === 1) {
@@ -40,7 +42,7 @@ export class ResultInfoComponent implements OnInit {
     return artistStr;
   }
 
-  addToQueue(track: any) {
+  addToQueue(track: Track) {
     // this.webPlayerService.addSong(track)
     this.queueService.addTrackToQueue(track);
   }
@@ -49,7 +51,7 @@ export class ResultInfoComponent implements OnInit {
     this.errorMessage = message;
   }
 
-  playSong(track: any) {
+  playSong(track: Track) {
     this.webPlayerService.addSong(track);
   }
 

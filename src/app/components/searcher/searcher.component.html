@@ -28,7 +28,7 @@
           <div *ngIf="loading$ | async; else results" class="loader"></div>
           <ng-template #results>
             <ng-container *ngIf="results$ | async as results">
-              <div *ngFor="let item of results.tracks.items">
+              <div *ngFor="let item of results">
                 <li
                   class="dropdown-item d-flex align-items-center p-3"
                   (click)="onSelectTrack(item)"

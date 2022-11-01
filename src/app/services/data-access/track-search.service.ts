@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, of, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { switchMap, of, Observable } from 'rxjs';
 import { httpOptions } from 'src/app/spotifyHttpOptions';
-
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     Authorization: 'Bearer ' + environment.accessToken,
-//     'Content-Type': 'application/json',
-//   }),
-// };
+import { Track } from 'src/app/models/track.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrackSearchService {
   // TODO: error handling
-  // TODO: need model for tracks
   baseUrl = 'https://api.spotify.com/v1/';
   // * This service calls the spotify API to retrieve track information
 
   constructor(private http: HttpClient) {}
 
-  getTrack(track: string) {
+  getTrack(track: string): Observable<Observable<Track[]>> {
     return of(
-      this.http.get(
-        this.baseUrl +
-          `search?q=${encodeURIComponent(track)}&type=track&limit=5`,
-        httpOptions
-      )
+      this.http
+        .get<any>(
+          this.baseUrl +
+            `search?q=${encodeURIComponent(track)}&type=track&limit=5`,
+          httpOptions
+        )
+        .pipe(switchMap((res) => of(res.tracks.items)))
     );
   }
 }

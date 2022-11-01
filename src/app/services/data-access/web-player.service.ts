@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import spotifyPlayer from 'spotify-web-playback';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Track } from 'src/app/models/track.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +24,7 @@ export class WebPlayerService {
     }
   }
 
-  addSong(track: any) {
-    // TODO: get player API call to work
+  addSong(track: Track) {
     this._spotify.play(track.uri);
   }
 

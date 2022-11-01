@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Track } from 'src/app/models/track.interface';
 
 @Component({
   selector: 'app-playlist',
@@ -14,7 +15,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaylistComponent implements OnInit {
-  @Input() tracks!: any[];
+  @Input() tracks!: Track[];
   @Input() name!: string;
   @Input() description!: string;
   @Output() onDetailsEvent = new EventEmitter<void>();
@@ -23,8 +24,8 @@ export class PlaylistComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  previewImages(): any[] {
-    let previewTracks: any[];
+  previewImages(): Track[] {
+    let previewTracks: Track[];
     if (this.tracks.length >= 4) {
       previewTracks = this.tracks.slice(0, 4);
     } else {

@@ -4,6 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { Track } from 'src/app/models/track.interface';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { WebPlayerService } from 'src/app/services/data-access/web-player.servic
 })
 export class TrackSliderComponent implements OnInit {
   // FIXME: need to fix issue with properties not re-rendering
-  @Input() result!: any;
+  @Input() result!: Track;
   sliderValue = 0;
   sliderLength = 1000;
   sliderInterval!: NodeJS.Timer;
@@ -23,7 +24,7 @@ export class TrackSliderComponent implements OnInit {
   ngOnInit(): void {
     if (this.result) {
       // set the end timestamp of the slider
-      this.sliderLength = Math.floor(this.result.duration_ms / 1000);
+      this.sliderLength = Math.floor(Number(this.result.duration_ms) / 1000);
       this.sliderInterval = setInterval(() => {
         if (this.webPlayerService.playerStatus) {
           // increase the value by 1 if the value is less than the length of the song. Otherwise clear the interval

@@ -10,6 +10,7 @@ import {
   tap,
   delay,
 } from 'rxjs';
+import { Track } from 'src/app/models/track.interface';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { TrackSearchService } from 'src/app/services/data-access/track-search.service';
@@ -23,7 +24,7 @@ export class SearcherComponent implements OnInit {
   searcherValue!: string;
   keywordSub!: Subscription;
   keywordSearch$ = new Subject<string>();
-  results$!: Observable<any> | undefined;
+  results$!: Observable<Track[]> | undefined;
   resultsErr$!: Observable<HttpErrorResponse>;
   loading$ = new BehaviorSubject<boolean>(false);
 
@@ -62,16 +63,12 @@ export class SearcherComponent implements OnInit {
     this.keywordSearch$.next(track);
   }
 
-  // test() {
-  //   this.results$?.subscribe((x) => console.log(x));
-  // }
-
   onOverlayClick() {
     this.results$ = undefined;
     this.searcherValue = '';
   }
 
-  onSelectTrack(track: any) {
+  onSelectTrack(track: Track) {
     console.log(track);
     this.selectedTrackService.selectTrack(track);
     // set results back to undefined on track select
@@ -79,7 +76,7 @@ export class SearcherComponent implements OnInit {
     this.searcherValue = '';
   }
 
-  onAddTrackToQueue(track: any) {
+  onAddTrackToQueue(track: Track) {
     this.queueService.addTrackToQueue(track);
   }
 

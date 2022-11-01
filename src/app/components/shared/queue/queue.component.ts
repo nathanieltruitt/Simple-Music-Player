@@ -3,6 +3,7 @@ import { QueueService } from 'src/app/services/component-communication/queue.ser
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
+import { Track } from 'src/app/models/track.interface';
 
 @Component({
   selector: 'app-queue',
@@ -30,7 +31,7 @@ export class QueueComponent implements OnInit {
     this.queueService.removeTrack(idx);
   }
 
-  playSong(track: any) {
+  playSong(track: Track) {
     this.isPlaying = true;
     this.selectedTrackService.selectTrack(track);
     this.webPlayerService.addSong(track);
