@@ -1,5 +1,6 @@
 <ng-container *ngIf="errorMessage">
-  <span class="alert-danger">{{ errorMessage }}</span>
+  <!-- FIXME: clear error message after song select -->
+  <span class="alert alert-danger">{{ errorMessage }}</span>
 </ng-container>
 <ng-container *ngIf="result$ | async as res; else defaultSong">
   <div class="player">
@@ -19,13 +20,15 @@
         <app-track-slider [result]="res"></app-track-slider>
         <div class="buttons d-flex justify-content-center align-items-center">
           <!-- TODO: add functionality to rev and forward buttons -->
-          <!-- FIXME: play button does not puase -->
           <fa-icon class="reverse-button fa-lg" [icon]="faForward"></fa-icon>
           <button
             class="btn btn-outline-success play-button"
-            (click)="playSong(res)"
+            (click)="toggleSong()"
           >
-            <fa-icon class="fa-2xl" [icon]="faPlay"></fa-icon>
+            <fa-icon
+              class="fa-2xl"
+              [icon]="playerStatus ? faPause : faPlay"
+            ></fa-icon>
           </button>
           <fa-icon class="forward-button fa-lg" [icon]="faForward"></fa-icon>
         </div>

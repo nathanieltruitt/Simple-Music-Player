@@ -21,6 +21,7 @@ export class WebPlayerService {
     if (this._spotify.playing) {
       this._spotify.pause();
     } else {
+      this._spotify.play();
     }
   }
 

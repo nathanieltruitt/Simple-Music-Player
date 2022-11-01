@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { PlaylistComponent } from './components/playlists/playlist/playlist.comp
 import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/result-info/track-slider/track-slider.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,13 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     ReactiveFormsModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

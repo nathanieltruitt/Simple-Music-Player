@@ -1,4 +1,5 @@
 <!-- TODO: improve queue table look -->
+<!-- TODO: moving text on hover if the text is overflowing -->
 <div class="smp-container">
   <div class="smp-queue">
     <div class="ps-3 row mb-4">
@@ -18,6 +19,7 @@
         <div class="row-group smp-queue-grid smp-queue-row">
           <div>
             <span>{{ i }}</span>
+            <!-- FIXME: does not change to pause when song is paused from player -->
             <button
               class="play-select btn btn-outline-success"
               (click)="playSong(item)"
@@ -42,7 +44,7 @@
           </p>
           <div>
             <button
-              (click)="removeItem(i)"
+              (click)="removeItem(item)"
               class="btn btn-danger btn-sm smp-queue-close-btn"
             >
               X

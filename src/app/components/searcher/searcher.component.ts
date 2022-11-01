@@ -78,13 +78,13 @@ export class SearcherComponent implements OnInit {
     this.searcherValue = '';
   }
 
-  onSelectTrack(track: Track) {
-    console.log(track);
-    this.selectedTrackService.selectTrack(track);
-    // set results back to undefined on track select
-    this.results$ = undefined;
-    this.searcherValue = '';
-  }
+  // onSelectTrack(track: Track) {
+  //   console.log(track);
+  //   this.selectedTrackService.selectTrack(track);
+  //   // set results back to undefined on track select
+  //   this.results$ = undefined;
+  //   this.searcherValue = '';
+  // }
 
   onAddTrackToQueue(track: Track) {
     this.queueService.addTrackToQueue(track);

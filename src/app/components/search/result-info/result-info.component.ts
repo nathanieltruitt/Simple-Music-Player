@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
-import { faPlay, faForward } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faForward, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Track } from 'src/app/models/track.interface';
 
 @Component({
@@ -15,6 +15,7 @@ export class ResultInfoComponent implements OnInit {
   result$!: Observable<Track>;
   errorMessage!: string;
   faPlay = faPlay;
+  faPause = faPause;
   faForward = faForward;
   constructor(
     private selectedTrackService: SelectedTrackService,
@@ -42,20 +43,15 @@ export class ResultInfoComponent implements OnInit {
     return artistStr;
   }
 
-  addToQueue(track: Track) {
-    // this.webPlayerService.addSong(track)
-    this.queueService.addTrackToQueue(track);
-  }
-
   setErrorMessage(message: string) {
     this.errorMessage = message;
   }
 
-  playSong(track: Track) {
-    this.webPlayerService.addSong(track);
+  toggleSong() {
+    this.webPlayerService.togglePlay();
   }
 
-  test() {
-    console.log(this.webPlayerService.playerStatus);
+  get playerStatus(): boolean {
+    return this.webPlayerService.playerStatus;
   }
 }

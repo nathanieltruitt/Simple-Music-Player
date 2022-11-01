@@ -27,11 +27,16 @@ export class QueueComponent implements OnInit {
     return this.queueService.queue$;
   }
 
-  removeItem(idx: number) {
-    this.queueService.removeTrack(idx);
+  removeItem(track: Track) {
+    this.queueService.removeTrack(track, false);
   }
 
   playSong(track: Track) {
+    if (this.webPlayerService.currentTrack === track.name) {
+      this.webPlayerService.togglePlay();
+      this.isPlaying = false;
+      return;
+    }
     this.isPlaying = true;
     this.selectedTrackService.selectTrack(track);
     this.webPlayerService.addSong(track);
