@@ -13,7 +13,7 @@ export class WebPlayerService {
   private _spotify = new spotifyPlayer('Simple Music Player');
   // * uses the web player API provided by _spotify to play songs in the browser.
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this._spotify.connect(environment.accessToken);
   }
 

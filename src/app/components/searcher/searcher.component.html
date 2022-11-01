@@ -6,12 +6,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 searcher-container">
-      <!-- TODO: work on getting error handling -->
       <!-- TODO: need to refactor searcher results dropdown -->
       <span
         class="alert alert-danger"
         *ngIf="resultsErr$ | async as resultsErr"
-        >{{ resultsErr }}</span
+        >{{ resultsErr.message }}</span
       >
       <div class="form-group searcher-form-group">
         <input

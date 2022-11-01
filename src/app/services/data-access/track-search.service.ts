@@ -15,7 +15,6 @@ import { Track } from 'src/app/models/track.interface';
   providedIn: 'root',
 })
 export class TrackSearchService {
-  // TODO: error handling
   baseUrl = 'https://api.spotify.com/v1/';
   // * This service calls the spotify API to retrieve track information
 
@@ -28,25 +27,6 @@ export class TrackSearchService {
           `search?q=${encodeURIComponent(track)}&type=track&limit=5`,
         httpOptions
       )
-      .pipe(
-        switchMap((res) => of(res.tracks.items)),
-        catchError((err) => {
-          let errMessage = '';
-          switch (err.status) {
-            case 400:
-              errMessage =
-                'There was an issue handling the request, please consult IT.';
-              break;
-
-            case 401:
-              errMessage = 'Access to the server was denied.';
-              break;
-
-            default:
-              break;
-          }
-          return throwError(() => new Error(errMessage));
-        })
-      );
+      .pipe(switchMap((res) => of(res.tracks.items)));
   }
 }
