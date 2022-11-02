@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   debounceTime,
   BehaviorSubject,
@@ -25,6 +25,7 @@ import { TrackSearchService } from 'src/app/services/data-access/track-search.se
   styleUrls: ['./searcher.component.css'],
 })
 export class SearcherComponent implements OnInit {
+  @Input() searchType!: 'queue' | 'playlist';
   searcherValue!: string;
   keywordSub!: Subscription;
   keywordSearch$ = new Subject<string>();
@@ -78,16 +79,16 @@ export class SearcherComponent implements OnInit {
     this.searcherValue = '';
   }
 
-  // onSelectTrack(track: Track) {
-  //   console.log(track);
-  //   this.selectedTrackService.selectTrack(track);
-  //   // set results back to undefined on track select
-  //   this.results$ = undefined;
-  //   this.searcherValue = '';
-  // }
+  onSelectTrack(track: Track) {
+    if (this.searchType !== 'playlist') {
+      this.queueService.addTrackToQueue(track);
+    } else {
+      this.selectedTrackService.selectTrack(track);
+    }
 
-  onAddTrackToQueue(track: Track) {
-    this.queueService.addTrackToQueue(track);
+    // set results back to undefined on track select
+    this.results$ = undefined;
+    this.searcherValue = '';
   }
 
   ngOnDestroy() {

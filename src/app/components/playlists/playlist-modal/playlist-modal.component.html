@@ -80,7 +80,7 @@
           </form>
           <hr />
           <!-- TODO: need to improve look of searcher inside of the modal -->
-          <app-searcher></app-searcher>
+          <app-searcher [searchType]="'playlist'"></app-searcher>
           <ng-container *ngIf="tracks.length > 0">
             <div class="playlist-table">
               <div class="playlist-row">

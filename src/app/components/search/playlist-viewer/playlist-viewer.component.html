@@ -1,0 +1,20 @@
+<div class="playlist-viewer">
+  <ng-container
+    *ngIf="getPlaylists() | async as playlists; else noPlaylistsRef"
+  >
+    <div class="viewer-grid">
+      <app-playlist
+        *ngFor="let playlist of playlists; let i = index"
+        [name]="playlist.name"
+        [description]="playlist.description"
+        [tracks]="playlist.tracks"
+        (onDetailsEvent)="openPlaylist(i)"
+      ></app-playlist>
+    </div>
+  </ng-container>
+  <ng-template #noPlaylistsRef>
+    <span style="width: 100%; font-size: 1.5rem" class="d-block text-center"
+      >No Playlists Created</span
+    >
+  </ng-template>
+</div>

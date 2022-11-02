@@ -10,31 +10,31 @@ import { RoutingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
-import { ResultInfoComponent } from './components/search/result-info/result-info.component';
-import { BottomPlayerComponent } from './components/shared/bottom-player/bottom-player.component';
-import { QueueComponent } from './components/shared/queue/queue.component';
-import { PlaylistComponent } from './components/playlists/playlist/playlist.component';
+import { PlayerComponent } from './components/search/player/player.component';
+import { QueueComponent } from './components/search/queue/queue.component';
+import { PlaylistComponent } from './components/shared/playlist/playlist.component';
 
 import { TimePipe } from './pipes/time.pipe';
-import { TrackSliderComponent } from './components/search/result-info/track-slider/track-slider.component';
+import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { SpotifyGuard } from './guards/spotify.guard';
+import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
     SearcherComponent,
-    ResultInfoComponent,
-    BottomPlayerComponent,
+    PlayerComponent,
     QueueComponent,
     PlaylistComponent,
     TimePipe,
     TrackSliderComponent,
     SideNavComponent,
     LoginComponent,
+    PlaylistViewerComponent,
   ],
   imports: [
     BrowserModule,

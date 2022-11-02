@@ -17,8 +17,12 @@ export class QueueService {
     private selectedTrackService: SelectedTrackService
   ) {}
 
-  addTrackToQueue(track: Track) {
-    this._queue.push(track);
+  addTrackToQueue(track: Track | Track[]) {
+    if (Array.isArray(track)) {
+      this._queue = [...this._queue, ...track];
+    } else {
+      this._queue.push(track);
+    }
     this.queue$.next(this._queue.slice());
   }
 

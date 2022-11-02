@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { Track } from 'src/app/models/track.interface';
+import { QueueService } from 'src/app/services/component-communication/queue.service';
 
 @Component({
   selector: 'app-playlist',
@@ -20,7 +21,7 @@ export class PlaylistComponent implements OnInit {
   @Input() description!: string;
   @Output() onDetailsEvent = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private queueService: QueueService) {}
 
   ngOnInit(): void {}
 
@@ -36,5 +37,9 @@ export class PlaylistComponent implements OnInit {
 
   onClick() {
     this.onDetailsEvent.emit();
+  }
+
+  onQueue() {
+    this.queueService.addTrackToQueue(this.tracks);
   }
 }

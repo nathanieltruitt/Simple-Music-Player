@@ -1,15 +1,15 @@
 <!-- TODO: need to build playlist viewer component -->
-<app-searcher></app-searcher>
-<div class="container mt-3">
+<app-searcher [searchType]="'queue'"></app-searcher>
+<div class="container mt-5">
   <div class="row">
-    <div class="col-sm-6">
-      <span>playlist viewer</span>
+    <div class="col-sm-12">
+      <app-playlist-viewer></app-playlist-viewer>
     </div>
   </div>
   <hr class="my-5" />
   <div class="row">
     <div class="col-sm-6">
-      <app-result-info></app-result-info>
+      <app-player></app-player>
     </div>
     <div class="col-sm-6">
       <app-queue></app-queue>

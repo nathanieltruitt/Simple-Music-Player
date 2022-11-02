@@ -7,11 +7,11 @@ import { faPlay, faForward, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Track } from 'src/app/models/track.interface';
 
 @Component({
-  selector: 'app-result-info',
-  templateUrl: './result-info.component.html',
-  styleUrls: ['./result-info.component.css'],
+  selector: 'app-player',
+  templateUrl: './player.component.html',
+  styleUrls: ['./player.component.css'],
 })
-export class ResultInfoComponent implements OnInit {
+export class PlayerComponent implements OnInit {
   result$!: Observable<Track>;
   errorMessage!: string;
   faPlay = faPlay;

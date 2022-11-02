@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { Playlist } from 'src/app/models/playlist.interface';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Playlist } from 'src/app/models/playlist.interface';
 })
 export class PlaylistService {
   private _playlists: Playlist[] = [];
-  playlists$ = new Subject<Playlist[]>();
+  playlists$ = new ReplaySubject<Playlist[]>(1);
 
   constructor() {}
 
