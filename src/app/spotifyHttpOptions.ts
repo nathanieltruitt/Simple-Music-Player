@@ -1,9 +1,16 @@
 import { HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+
+const accessString = localStorage.getItem('spotify_auth') || '';
+let accessToken;
+if (accessString) {
+  accessToken = JSON.parse(accessString)['access_token'];
+} else {
+  accessToken = '';
+}
 
 export const httpOptions = {
   headers: new HttpHeaders({
-    Authorization: 'Bearer ' + environment.accessToken,
+    Authorization: 'Bearer ' + accessToken,
     'Content-Type': 'application/json',
   }),
 };

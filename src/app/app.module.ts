@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RoutingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { ResultInfoComponent } from './components/search/result-info/result-info.component';
 import { BottomPlayerComponent } from './components/shared/bottom-player/bottom-player.component';
@@ -20,11 +19,12 @@ import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/result-info/track-slider/track-slider.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
+import { LoginComponent } from './components/login/login.component';
+import { SpotifyGuard } from './guards/spotify.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     RoutingComponents,
     SearcherComponent,
     ResultInfoComponent,
@@ -34,6 +34,7 @@ import { HttpErrorInterceptor } from './services/data-access/http-error.intercep
     TimePipe,
     TrackSliderComponent,
     SideNavComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +50,7 @@ import { HttpErrorInterceptor } from './services/data-access/http-error.intercep
       useClass: HttpErrorInterceptor,
       multi: true,
     },
+    SpotifyGuard,
   ],
   bootstrap: [AppComponent],
 })

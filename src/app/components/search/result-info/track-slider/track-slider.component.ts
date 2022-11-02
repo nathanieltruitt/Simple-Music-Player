@@ -31,7 +31,6 @@ export class TrackSliderComponent implements OnInit {
       this.sliderLength = Math.floor(Number(this.result.duration_ms) / 1000);
       this.sliderInterval = setInterval(() => {
         if (this.webPlayerService.playerStatus) {
-          console.log(this.webPlayerService.playerStatus);
           // increase the value by 1 if the value is less than the length of the song. Otherwise clear the interval
           if (this.sliderValue < this.sliderLength) {
             this.sliderValue = this.sliderValue + 1;

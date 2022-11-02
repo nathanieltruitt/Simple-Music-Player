@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import spotifyPlayer from 'spotify-web-playback';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Track } from 'src/app/models/track.interface';
 
 @Injectable({
@@ -14,7 +12,10 @@ export class WebPlayerService {
   // * uses the web player API provided by _spotify to play songs in the browser.
 
   constructor() {
-    this._spotify.connect(environment.accessToken);
+    let auth = localStorage.getItem('spotify_auth') || '';
+    if (auth) {
+      this._spotify.connect(JSON.parse(auth)['access_token']);
+    }
   }
 
   togglePlay() {

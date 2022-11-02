@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { PlaylistModalComponent } from './components/playlists/playlist-modal/playlist-modal.component';
 import { SearchComponent } from './components/search/search.component';
+import { LoginComponent } from './components/login/login.component';
+import { SpotifyGuard } from './guards/spotify.guard';
 
 const routes: Routes = [
   {
@@ -13,10 +15,12 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent,
+    canActivate: [SpotifyGuard],
   },
   {
     path: 'playlists',
     component: PlaylistsComponent,
+    canActivate: [SpotifyGuard],
     children: [
       {
         path: 'detail/',
@@ -32,6 +36,14 @@ const routes: Routes = [
         component: PlaylistModalComponent,
       },
     ],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'callback',
+    component: LoginComponent,
   },
 ];
 
