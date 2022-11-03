@@ -6,7 +6,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 searcher-container">
-      <!-- TODO: need to refactor searcher results dropdown -->
       <span
         class="alert alert-danger"
         *ngIf="resultsErr$ | async as resultsErr"
@@ -22,7 +21,7 @@
           (keyup)="onSearch(searcherValue)"
         />
       </div>
-      <div class="dropdown mt-1">
+      <div class="dropdown smp-dropdown">
         <ul
           class="dropdown-menu custom-dropdown-menu"
           [class.show]="searcherValue"

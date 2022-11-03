@@ -8,6 +8,7 @@ import { WebPlayerService } from '../data-access/web-player.service';
 })
 export class SelectedTrackService {
   // * this service is intended for accessing the currently selected track from the searcher component.
+  // * it tells the app which song we are currently interested in
   private selected$ = new Subject<Track>();
 
   constructor(private webPlayerService: WebPlayerService) {}

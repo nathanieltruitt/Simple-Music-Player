@@ -79,7 +79,6 @@
             </div>
           </form>
           <hr />
-          <!-- TODO: need to improve look of searcher inside of the modal -->
           <app-searcher [searchType]="'playlist'"></app-searcher>
           <ng-container *ngIf="tracks.length > 0">
             <div class="playlist-table">
@@ -104,7 +103,12 @@
                     >
                       X
                     </button>
-                    <button class="btn btn-sm btn-secondary">Queue</button>
+                    <button
+                      (click)="onQueueTrack(track)"
+                      class="btn btn-sm btn-secondary"
+                    >
+                      Queue
+                    </button>
                     <button class="btn btn-sm btn-success">Play</button>
                   </div>
                 </div>

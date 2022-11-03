@@ -1,4 +1,5 @@
-<div class="card" style="width: 18rem">
+<!-- TODO: fix detail button on search page -->
+<div class="card shadow" style="width: 14rem">
   <div
     [ngClass]="{ 'playlist-card-imgs': this.tracks.length >= 4 }"
     class="card-img-top"
@@ -12,10 +13,12 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ name }}</h5>
-    <p class="card-text">
+    <p class="card-text mb-2">
       {{ description }}
     </p>
-    <a class="btn btn-success float-end" (click)="onQueue()">Queue</a>
-    <a class="btn btn-primary float-end me-2" (click)="onClick()">Details</a>
+    <a class="btn btn-sm btn-success float-end" (click)="onQueue()">Queue</a>
+    <a class="btn btn-sm btn-primary float-end me-2" (click)="onClick()"
+      >Details</a
+    >
   </div>
 </div>

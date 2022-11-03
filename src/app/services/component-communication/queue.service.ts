@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
 import { WebPlayerService } from '../data-access/web-player.service';
 import { SelectedTrackService } from './selected-track.service';
@@ -10,7 +10,7 @@ import { SelectedTrackService } from './selected-track.service';
 export class QueueService {
   // * tracks will be loaded into the queue array
   private _queue: Track[] = [];
-  queue$ = new Subject<Track[]>();
+  queue$ = new ReplaySubject<Track[]>(1);
 
   constructor(
     private webPlayerService: WebPlayerService,

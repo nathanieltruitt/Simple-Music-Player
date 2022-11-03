@@ -5,10 +5,10 @@
 }
 
 .playlists {
-  background-color: #d2d2d2;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  height: 100%;
+  height: 75%;
 }
 
 .playlist-grid {

@@ -6,13 +6,16 @@ import { SelectedTrackService } from 'src/app/services/component-communication/s
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Track } from 'src/app/models/track.interface';
+import { QueueService } from 'src/app/services/component-communication/queue.service';
+import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
+import { PlaylistDetailService } from 'src/app/services/component-communication/playlist-detail.service';
 
 @Component({
-  selector: 'app-playlist-modal',
-  templateUrl: './playlist-modal.component.html',
-  styleUrls: ['./playlist-modal.component.css'],
+  selector: 'app-playlist-detail',
+  templateUrl: './playlist-detail.component.html',
+  styleUrls: ['./playlist-detail.component.css'],
 })
-export class PlaylistModalComponent implements OnInit {
+export class PlaylistDetailComponent implements OnInit {
   selectedTrackSub!: Subscription;
   routeSub!: Subscription;
   playlistForm!: FormGroup;
@@ -21,11 +24,14 @@ export class PlaylistModalComponent implements OnInit {
   playlistId!: number;
   lastNum!: number;
   constructor(
+    private playlistDetailService: PlaylistDetailService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private selectedTrackService: SelectedTrackService,
-    private playlistService: PlaylistService
+    private playlistService: PlaylistService,
+    private queueService: QueueService,
+    private webPlayerService: WebPlayerService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +55,7 @@ export class PlaylistModalComponent implements OnInit {
         this.playlistForm
           .get('name')
           ?.addValidators(
-            this.playlistService.forbiddenNameValidator(
+            this.playlistDetailService.forbiddenNameValidator(
               this.playlistId !== undefined
             )
           );
@@ -65,7 +71,7 @@ export class PlaylistModalComponent implements OnInit {
       this.playlistForm
         .get('name')
         ?.addValidators(
-          this.playlistService.forbiddenNameValidator(
+          this.playlistDetailService.forbiddenNameValidator(
             this.playlistId !== undefined
           )
         );
@@ -97,9 +103,17 @@ export class PlaylistModalComponent implements OnInit {
     this.tracks.splice(idx, 1);
   }
 
+  onQueueTrack(track: Track) {
+    this.playlistDetailService.queueTrack(track);
+  }
+
+  onPlayTrack(track: Track) {
+    this.playlistDetailService.playTrack(track);
+  }
+
   onCheckPlaylists(playlist: string): boolean {
     if (!this.playlistId) return false;
-    return this.playlistService.checkPlaylists(playlist);
+    return this.playlistDetailService.checkPlaylists(playlist);
   }
 
   ngOnDestroy() {

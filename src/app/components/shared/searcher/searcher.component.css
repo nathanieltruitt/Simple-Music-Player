@@ -29,7 +29,12 @@
   width: 400px;
   height: 45px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #ababab;
+  margin-bottom: 0.5rem;
+}
+
+#track-searcher:focus {
+  outline: none;
 }
 
 @media only screen and (max-width: 25em) {
@@ -60,4 +65,8 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.smp-dropdown {
+  margin-top: 4rem;
 }

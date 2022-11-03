@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RoutingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { SearcherComponent } from './components/searcher/searcher.component';
+import { SearcherComponent } from './components/shared/searcher/searcher.component';
 import { PlayerComponent } from './components/search/player/player.component';
 import { QueueComponent } from './components/search/queue/queue.component';
 import { PlaylistComponent } from './components/shared/playlist/playlist.component';
