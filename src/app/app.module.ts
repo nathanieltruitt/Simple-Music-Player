@@ -18,10 +18,11 @@ import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/shared/login/login.component';
 import { SpotifyGuard } from './guards/spotify.guard';
 import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
 
+// TODO: break each app section into separate modules including shared module
 @NgModule({
   declarations: [
     AppComponent,

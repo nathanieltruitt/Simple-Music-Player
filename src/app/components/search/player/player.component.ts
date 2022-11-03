@@ -19,7 +19,6 @@ export class PlayerComponent implements OnInit {
   faForward = faForward;
   constructor(
     private selectedTrackService: SelectedTrackService,
-    private queueService: QueueService,
     private webPlayerService: WebPlayerService
   ) {}
 

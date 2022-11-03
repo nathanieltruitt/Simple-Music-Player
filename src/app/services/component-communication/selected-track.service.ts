@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
 import { WebPlayerService } from '../data-access/web-player.service';
 
@@ -9,7 +9,7 @@ import { WebPlayerService } from '../data-access/web-player.service';
 export class SelectedTrackService {
   // * this service is intended for accessing the currently selected track from the searcher component.
   // * it tells the app which song we are currently interested in
-  private selected$ = new Subject<Track>();
+  private selected$ = new ReplaySubject<Track>(1);
 
   constructor(private webPlayerService: WebPlayerService) {}
 

@@ -20,6 +20,8 @@ export class PlaylistDetailComponent implements OnInit {
   routeSub!: Subscription;
   playlistForm!: FormGroup;
   tracks: Track[] = [];
+  // kind of a dirty way to do this
+  playButtonClicked = false;
   faTrashCan = faTrashCan;
   playlistId!: number;
   lastNum!: number;
@@ -29,14 +31,16 @@ export class PlaylistDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private selectedTrackService: SelectedTrackService,
-    private playlistService: PlaylistService,
-    private queueService: QueueService,
-    private webPlayerService: WebPlayerService
+    private playlistService: PlaylistService
   ) {}
 
   ngOnInit(): void {
     this.selectedTrackSub = this.selectedTrackService.selected.subscribe(
       (track) => {
+        if (this.playButtonClicked) {
+          this.playButtonClicked = false;
+          return;
+        }
         this.tracks.push(track);
       }
     );
@@ -108,6 +112,7 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   onPlayTrack(track: Track) {
+    this.playButtonClicked = true;
     this.playlistDetailService.playTrack(track);
   }
 

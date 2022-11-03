@@ -10,6 +10,7 @@ import { SelectedTrackService } from './selected-track.service';
   providedIn: 'root',
 })
 export class PlaylistDetailService {
+  // ? does it make since to create a dedicated service for playlist-detail to not have so many injected services
   constructor(
     private queueService: QueueService,
     private webPlayerService: WebPlayerService,

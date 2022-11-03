@@ -21,6 +21,8 @@ export class PlaylistViewerComponent implements OnInit {
   }
 
   openPlaylist(idx: number) {
-    this.router.navigate([`detail/${idx}`], { relativeTo: this.route });
+    this.router.navigate([`/playlists/detail/${idx}`], {
+      relativeTo: this.route,
+    });
   }
 }

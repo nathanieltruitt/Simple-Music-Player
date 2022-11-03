@@ -26,6 +26,8 @@ export class PlaylistComponent implements OnInit {
   ngOnInit(): void {}
 
   previewImages(): Track[] {
+    // * Creates the preview images on the card. If 4 songs have been added to the playlist will display
+    // * one otherwise it displays 1 image.
     let previewTracks: Track[];
     if (this.tracks.length >= 4) {
       previewTracks = this.tracks.slice(0, 4);

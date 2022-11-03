@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-modal/playlist-detail.component';
 import { SearchComponent } from './components/search/search.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/shared/login/login.component';
 import { SpotifyGuard } from './guards/spotify.guard';
 
 const routes: Routes = [
