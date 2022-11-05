@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-modal/playlist-detail.component';
 import { SearchComponent } from './components/search/search.component';
-import { LoginComponent } from './components/shared/login/login.component';
+import { SpotifyAuthComponent } from './components/shared/spotify-auth/spotify-auth.component';
 import { SpotifyGuard } from './guards/spotify.guard';
 
 const routes: Routes = [
@@ -39,11 +39,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: SpotifyAuthComponent,
   },
   {
     path: 'callback',
-    component: LoginComponent,
+    component: SpotifyAuthComponent,
   },
 ];
 
