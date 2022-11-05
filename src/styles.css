@@ -12,7 +12,11 @@ p {
 html,
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  background-color: linear-gradient(
+    hsl(33, 100%, 50%, 0.3),
+    hsl(235, 100%, 81%, 0.3)
+  );
 }
 
 * {

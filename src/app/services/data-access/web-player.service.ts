@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import spotifyPlayer from 'spotify-web-playback';
 import { Track } from 'src/app/models/track.interface';
 
@@ -7,7 +8,7 @@ import { Track } from 'src/app/models/track.interface';
 })
 export class WebPlayerService {
   // private baseUrl = 'https://api.spotify.com/v1/me/';
-  currentTrack!: string;
+  currentTrack = new Subject<string>();
   private _spotify = new spotifyPlayer('Simple Music Player');
   // * uses the web player API provided by _spotify to play songs in the browser.
 

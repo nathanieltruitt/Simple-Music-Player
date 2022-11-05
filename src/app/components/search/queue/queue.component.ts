@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 import { Track } from 'src/app/models/track.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-queue',
   templateUrl: './queue.component.html',
   styleUrls: ['./queue.component.css'],
 })
-export class QueueComponent implements OnInit {
+export class QueueComponent implements OnInit, OnDestroy {
   // TODO: queue visibly displays the song being played
+  currentTrackSub!: Subscription;
+  currentTrack!: string;
   faPlay = faPlay;
   faPause = faPause;
   isPlaying = false;
@@ -21,7 +24,13 @@ export class QueueComponent implements OnInit {
     private webPlayerService: WebPlayerService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentTrackSub = this.webPlayerService.currentTrack.subscribe(
+      (trackName) => {
+        this.currentTrack = trackName;
+      }
+    );
+  }
 
   getQueue() {
     return this.queueService.queue$;
@@ -32,7 +41,7 @@ export class QueueComponent implements OnInit {
   }
 
   playSong(track: Track) {
-    if (this.webPlayerService.currentTrack === track.name) {
+    if (this.currentTrack === track.name) {
       this.webPlayerService.togglePlay();
       this.isPlaying = false;
       return;
@@ -40,10 +49,14 @@ export class QueueComponent implements OnInit {
     this.isPlaying = true;
     this.selectedTrackService.selectTrack(track);
     this.webPlayerService.addSong(track);
-    this.webPlayerService.currentTrack = track.name;
+    this.currentTrack = track.name;
   }
 
   getCurrentTrack() {
-    return this.webPlayerService.currentTrack;
+    return this.currentTrack;
+  }
+
+  ngOnDestroy(): void {
+    this.currentTrackSub.unsubscribe();
   }
 }

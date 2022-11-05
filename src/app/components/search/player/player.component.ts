@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { QueueService } from 'src/app/services/component-communication/queue.service';
+import { Observable, Subscription } from 'rxjs';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 import { faPlay, faForward, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Track } from 'src/app/models/track.interface';
+import { QueueService } from 'src/app/services/component-communication/queue.service';
 
 @Component({
   selector: 'app-player',
@@ -19,7 +19,8 @@ export class PlayerComponent implements OnInit {
   faForward = faForward;
   constructor(
     private selectedTrackService: SelectedTrackService,
-    private webPlayerService: WebPlayerService
+    private webPlayerService: WebPlayerService,
+    private queueService: QueueService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +49,14 @@ export class PlayerComponent implements OnInit {
 
   toggleSong() {
     this.webPlayerService.togglePlay();
+  }
+
+  onReverseTrack(track: Track) {
+    this.queueService.move(track, false);
+  }
+
+  onForwardTrack(track: Track) {
+    this.queueService.move(track, true);
   }
 
   get playerStatus(): boolean {

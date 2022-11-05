@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
 import { WebPlayerService } from '../data-access/web-player.service';
 import { SelectedTrackService } from './selected-track.service';
@@ -31,12 +31,26 @@ export class QueueService {
     // * Play the next song if this value is true
     if (playNext && this._queue.length > 1) {
       const nextSong = this._queue[idxNum + 1];
+      console.log('hello');
       // FIXME: not playing next song
       this.selectedTrackService.selectTrack(nextSong);
       this.webPlayerService.addSong(nextSong);
     }
     this._queue.splice(idxNum, 1);
     this.queue$.next(this._queue.slice());
+  }
+
+  move(track: Track, isForward: boolean) {
+    if (this._queue.length > 1) {
+      let changedTrack;
+      const idxNum = this._queue.indexOf(track);
+      isForward
+        ? (changedTrack = this._queue[idxNum + 1])
+        : (changedTrack = this._queue[idxNum - 1]);
+      this.selectedTrackService.selectTrack(changedTrack);
+      this.webPlayerService.currentTrack.next(changedTrack.name);
+      this.webPlayerService.addSong(changedTrack);
+    }
   }
 
   get queue() {
