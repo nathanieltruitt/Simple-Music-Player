@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import SpotifyPlayer from 'spotify-web-playback';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,9 @@ import SpotifyPlayer from 'spotify-web-playback';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  // isPlaying = false;
-  // uri = 'spotify:track:54flyrjcdnQdco7300avMJ';
-  // spotify = new SpotifyPlayer('Simple Music Player');
-  // async playSong() {
-  //   if (!this.isPlaying) {
-  //     await this.spotify.connect(this.token);
-  //     this.spotify.play(this.uri);
-  //     this.isPlaying = true;
-  //   } else {
-  //     this.spotify.pause();
-  //     this.isPlaying = false;
-  //   }
-  // }
+  constructor(private authService: AuthService) {}
+
+  get isAuth() {
+    return this.authService.authenticatedUser;
+  }
 }

@@ -22,8 +22,12 @@
       ></a>
     </li>
     <li>
-      <a class="side-nav-link" routerLink="/login"
-        ><fa-icon class="fa-xl" [icon]="faRightToBracket"></fa-icon
+      <a class="side-nav-link" routerLink="/auth/login"
+        ><fa-icon
+          class="fa-xl"
+          [icon]="faRightFromBracket"
+          (click)="onLogout()"
+        ></fa-icon
       ></a>
     </li>
   </ul>

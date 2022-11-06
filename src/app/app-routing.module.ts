@@ -5,6 +5,7 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-modal/p
 import { SearchComponent } from './components/search/search.component';
 import { SpotifyAuthComponent } from './components/shared/spotify-auth/spotify-auth.component';
 import { SpotifyGuard } from './guards/spotify.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,12 +16,12 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent,
-    canActivate: [SpotifyGuard],
+    canActivate: [SpotifyGuard, AuthGuard],
   },
   {
     path: 'playlists',
     component: PlaylistsComponent,
-    canActivate: [SpotifyGuard],
+    canActivate: [SpotifyGuard, AuthGuard],
     children: [
       {
         path: 'detail/',
@@ -40,10 +41,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: SpotifyAuthComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'callback',
     component: SpotifyAuthComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

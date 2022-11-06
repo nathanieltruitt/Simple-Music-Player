@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
+  errMsg!: string;
   // TODO: setup error handling message in UI
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -16,8 +18,11 @@ export class AuthComponent implements OnInit {
     if (!form.valid) return;
     const { email, password } = form.value;
     this.authService.signIn(email, password).subscribe({
-      next: (res) => console.log(res),
-      error: (err) => console.log(err),
+      next: (res) => {
+        console.log('Auth Success: ', res);
+        this.router.navigate(['/search']);
+      },
+      error: (err) => (this.errMsg = err.message),
     });
   }
 }
