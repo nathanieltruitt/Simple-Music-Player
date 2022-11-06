@@ -56,4 +56,5 @@ export const RoutingComponents = [
   SearchComponent,
   PlaylistDetailComponent,
   PlaylistsComponent,
+  SpotifyAuthComponent,
 ];

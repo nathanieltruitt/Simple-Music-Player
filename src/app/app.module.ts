@@ -18,9 +18,9 @@ import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
-import { LoginComponent } from './components/shared/spotify-auth/spotify-auth.component';
 import { SpotifyGuard } from './guards/spotify.guard';
 import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
+import { AuthModule } from './auth/auth.module';
 
 // TODO: break each app section into separate modules including shared module
 @NgModule({
@@ -34,11 +34,11 @@ import { PlaylistViewerComponent } from './components/search/playlist-viewer/pla
     TimePipe,
     TrackSliderComponent,
     SideNavComponent,
-    LoginComponent,
     PlaylistViewerComponent,
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
