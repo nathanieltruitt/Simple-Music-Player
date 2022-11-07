@@ -29,7 +29,7 @@ export class SpotifyService {
         'https://accounts.spotify.com/authorize?' +
           new URLSearchParams({
             response_type: 'code',
-            client_id: environment.clientId,
+            client_id: 'https://codelabs-cc55a.web.app/callback',
             scope: this.scopes,
             redirect_uri: redirectUri,
           }).toString()
