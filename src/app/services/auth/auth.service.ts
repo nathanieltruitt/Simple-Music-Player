@@ -18,7 +18,10 @@ const loginUri =
   providedIn: 'root',
 })
 export class AuthService {
-  authenticatedUser = new BehaviorSubject<User | null>(null);
+  authData = localStorage.getItem('userData');
+  authenticatedUser = new BehaviorSubject<User | null>(
+    this.authData ? JSON.parse(this.authData) : null
+  );
   constructor(private http: HttpClient) {}
 
   signIn(email: string, password: string) {
