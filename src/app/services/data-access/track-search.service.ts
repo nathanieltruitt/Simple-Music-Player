@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  switchMap,
-  of,
-  Observable,
-  catchError,
-  Subject,
-  throwError,
-} from 'rxjs';
+import { switchMap, of, Observable } from 'rxjs';
 import { httpOptions } from 'src/app/spotifyHttpOptions';
 import { Track } from 'src/app/models/track.interface';
 
