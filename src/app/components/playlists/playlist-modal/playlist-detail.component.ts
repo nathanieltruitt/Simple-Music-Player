@@ -35,6 +35,7 @@ export class PlaylistDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // FIXME: playlist modal not saving first track
     this.selectedTrackSub = this.selectedTrackService.selected
       .pipe(skip(1))
       .subscribe((track) => {
