@@ -27,7 +27,6 @@ export class PlayerComponent implements OnInit {
     this.result$ = this.selectedTrackService.selected;
   }
 
-  // TODO: need model for artist
   getArtistString(artists: any[]) {
     let artistStr;
     if (artists.length === 1) {

@@ -1,3 +1,7 @@
+:host {
+  width: 14rem;
+}
+
 .playlist-card-imgs {
   display: grid;
   grid-template-columns: 1fr 1fr;

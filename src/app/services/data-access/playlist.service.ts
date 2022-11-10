@@ -17,7 +17,7 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root',
 })
 export class PlaylistService implements OnDestroy {
-  // TODO: add firestore
+  // FIXME: getting 401 attempts when logging back in, reloading the page fixes
   private _user!: User | null;
   private _playlists: Playlist[] = [];
   playlists$ = new ReplaySubject<Playlist[]>(1);
@@ -64,6 +64,7 @@ export class PlaylistService implements OnDestroy {
   }
 
   getPlaylists(user: User) {
+    console.log(user);
     return this.http.get<{ playlists: Playlist[] }>(
       `https://codelabs-cc55a-default-rtdb.firebaseio.com/playlists/${user.id}.json?auth=${user.token}`
     );
