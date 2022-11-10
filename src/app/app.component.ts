@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import SpotifyPlayer from 'spotify-web-playback';
+import { Component } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 
 @Component({

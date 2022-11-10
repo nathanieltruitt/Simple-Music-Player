@@ -28,4 +28,8 @@ export class PlaylistsComponent implements OnInit {
   openPlaylist(idx: number): void {
     this.router.navigate([`detail/${idx}`], { relativeTo: this.route });
   }
+
+  onSavePlaylists() {
+    this.playlistService.savePlaylists();
+  }
 }

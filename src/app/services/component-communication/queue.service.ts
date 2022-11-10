@@ -31,7 +31,6 @@ export class QueueService {
     // * Play the next song if this value is true
     if (playNext && this._queue.length > 1) {
       const nextSong = this._queue[idxNum + 1];
-      console.log('hello');
       // FIXME: not playing next song
       this.selectedTrackService.selectTrack(nextSong);
       this.webPlayerService.addSong(nextSong);

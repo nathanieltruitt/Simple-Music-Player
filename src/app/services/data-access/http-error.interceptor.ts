@@ -20,7 +20,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       retry(2),
       catchError((err) => {
         if (err.status === 401) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }
         return throwError(() => err);
       })
