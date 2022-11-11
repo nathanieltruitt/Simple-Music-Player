@@ -9,13 +9,9 @@ import {
   switchMap,
   tap,
   delay,
-  catchError,
-  throwError,
-  map,
   of,
 } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { TrackSearchService } from 'src/app/services/data-access/track-search.service';

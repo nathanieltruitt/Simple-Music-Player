@@ -6,8 +6,6 @@ import { SelectedTrackService } from 'src/app/services/component-communication/s
 import { PlaylistService } from 'src/app/services/data-access/playlist.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Track } from 'src/app/models/track.interface';
-import { QueueService } from 'src/app/services/component-communication/queue.service';
-import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
 import { PlaylistDetailService } from 'src/app/services/component-communication/playlist-detail.service';
 
 @Component({

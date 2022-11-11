@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from 'src/app/services/data-access/spotify.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   templateUrl: './spotify-auth.component.html',

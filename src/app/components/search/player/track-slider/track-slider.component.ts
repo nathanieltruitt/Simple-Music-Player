@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Track } from 'src/app/models/track.interface';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { WebPlayerService } from 'src/app/services/data-access/web-player.service';
