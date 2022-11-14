@@ -9,8 +9,6 @@ import { WebPlayerService } from 'src/app/services/data-access/web-player.servic
   styleUrls: ['./track-slider.component.css'],
 })
 export class TrackSliderComponent implements OnInit {
-  // FIXME: need to fix issue with properties not re-rendering
-  // FIXME: track timer resets when re-rendering. The logic needs to be de-coupled from the component
   @Input() result!: Track;
   sliderValue = 0;
   sliderLength = 1000;

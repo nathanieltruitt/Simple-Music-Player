@@ -45,6 +45,10 @@
   font-size: 0.8rem;
 }
 
+@keyframes text-animation {
+
+}
+
 /* Play button */
 .play-select {
   border-radius: 50%;

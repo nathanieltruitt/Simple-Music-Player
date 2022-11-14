@@ -33,16 +33,15 @@ export class PlaylistDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // FIXME: playlist modal not saving first track
-    this.selectedTrackSub = this.selectedTrackService.selected
-      .pipe(skip(1))
-      .subscribe((track) => {
+    this.selectedTrackSub = this.selectedTrackService.selected.subscribe(
+      (track) => {
         if (this.playButtonClicked) {
           this.playButtonClicked = false;
           return;
         }
         this.tracks.push(track);
-      });
+      }
+    );
 
     this.playlistForm = this.fb.group({
       name: ['', [Validators.required]],
