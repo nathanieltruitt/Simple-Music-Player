@@ -14,7 +14,6 @@ import { QueueComponent } from './components/search/queue/queue.component';
 
 import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
 import { SpotifyGuard } from './guards/spotify.guard';
 import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
@@ -30,7 +29,6 @@ import { SharedModule } from './components/shared/shared.module';
     QueueComponent,
     TimePipe,
     TrackSliderComponent,
-    SideNavComponent,
     PlaylistViewerComponent,
   ],
   imports: [BrowserModule, AuthModule, AppRoutingModule, SharedModule],
