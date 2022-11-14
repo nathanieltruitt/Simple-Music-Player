@@ -19,19 +19,20 @@ import { SpotifyGuard } from './guards/spotify.guard';
 import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './components/shared/shared.module';
+import { SearchModule } from './components/search/search.module';
+import { PlaylistsModule } from './components/playlists/playlists.module';
 
 // TODO: break each app section into separate modules including shared module
 @NgModule({
-  declarations: [
-    AppComponent,
-    RoutingComponents,
-    PlayerComponent,
-    QueueComponent,
-    TimePipe,
-    TrackSliderComponent,
-    PlaylistViewerComponent,
+  declarations: [AppComponent, RoutingComponents, TrackSliderComponent],
+  imports: [
+    BrowserModule,
+    AuthModule,
+    AppRoutingModule,
+    SharedModule,
+    SearchModule,
+    PlaylistsModule,
   ],
-  imports: [BrowserModule, AuthModule, AppRoutingModule, SharedModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
