@@ -9,10 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RoutingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { SearcherComponent } from './components/shared/searcher/searcher.component';
 import { PlayerComponent } from './components/search/player/player.component';
 import { QueueComponent } from './components/search/queue/queue.component';
-import { PlaylistComponent } from './components/shared/playlist/playlist.component';
 
 import { TimePipe } from './pipes/time.pipe';
 import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
@@ -21,30 +19,21 @@ import { HttpErrorInterceptor } from './services/data-access/http-error.intercep
 import { SpotifyGuard } from './guards/spotify.guard';
 import { PlaylistViewerComponent } from './components/search/playlist-viewer/playlist-viewer.component';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './components/shared/shared.module';
 
 // TODO: break each app section into separate modules including shared module
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
-    SearcherComponent,
     PlayerComponent,
     QueueComponent,
-    PlaylistComponent,
     TimePipe,
     TrackSliderComponent,
     SideNavComponent,
     PlaylistViewerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AuthModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-  ],
+  imports: [BrowserModule, AuthModule, AppRoutingModule, SharedModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
