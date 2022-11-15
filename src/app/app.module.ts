@@ -6,11 +6,9 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './components/shared/shared.module';
 import { SearchModule } from './components/search/search.module';
 import { PlaylistsModule } from './components/playlists/playlists.module';
-
 import { RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpotifyGuard } from './guards/spotify.guard';
-
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
 // TODO: work on improving styles
 @NgModule({
