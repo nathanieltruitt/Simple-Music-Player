@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth/auth.service';
 export class AuthComponent implements OnInit {
   errMsg!: string;
   // TODO: setup error handling message in UI
+  // TODO: Refactor auth component
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}

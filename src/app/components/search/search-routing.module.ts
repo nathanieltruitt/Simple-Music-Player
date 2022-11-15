@@ -6,7 +6,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'search',
+    path: '',
     component: SearchComponent,
     canActivate: [SpotifyGuard, AuthGuard],
   },

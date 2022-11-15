@@ -10,6 +10,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { TimePipe } from 'src/app/pipes/time.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TimePipe } from 'src/app/pipes/time.pipe';
     SearcherComponent,
     SideNavComponent,
     TimePipe,
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { TimePipe } from 'src/app/pipes/time.pipe';
     PlaylistComponent,
     SearcherComponent,
     SideNavComponent,
+    PageNotFoundComponent,
     TimePipe,
     CommonModule,
     FormsModule,

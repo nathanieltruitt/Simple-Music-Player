@@ -7,7 +7,7 @@ import { PlaylistsComponent } from './playlists.component';
 
 const routes: Routes = [
   {
-    path: 'playlists',
+    path: '',
     component: PlaylistsComponent,
     canActivate: [SpotifyGuard, AuthGuard],
     children: [
