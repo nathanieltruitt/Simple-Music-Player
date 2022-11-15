@@ -11,6 +11,7 @@ import { SearcherComponent } from './searcher/searcher.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { TimePipe } from 'src/app/pipes/time.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NavItemComponent } from './side-nav/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SideNavComponent,
     TimePipe,
     PageNotFoundComponent,
+    NavItemComponent,
   ],
   imports: [
     CommonModule,
