@@ -5,6 +5,7 @@ import { SearchComponent } from './search.component';
 import { QueueComponent } from './queue/queue.component';
 import { PlayerComponent } from './player/player.component';
 import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.component';
+import { TrackSliderComponent } from './player/track-slider/track-slider.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { PlaylistViewerComponent } from './playlist-viewer/playlist-viewer.compo
     QueueComponent,
     PlayerComponent,
     PlaylistViewerComponent,
+    TrackSliderComponent,
   ],
   imports: [SharedModule, SearchRoutingModule],
   exports: [SearchComponent],

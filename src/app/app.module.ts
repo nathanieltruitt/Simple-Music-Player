@@ -9,20 +9,19 @@ import { PlaylistsModule } from './components/playlists/playlists.module';
 
 import { RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrackSliderComponent } from './components/search/player/track-slider/track-slider.component';
 import { SpotifyGuard } from './guards/spotify.guard';
 
 import { HttpErrorInterceptor } from './services/data-access/http-error.interceptor';
 // TODO: work on improving styles
 @NgModule({
-  declarations: [AppComponent, RoutingComponents, TrackSliderComponent],
+  declarations: [AppComponent, RoutingComponents],
   imports: [
     BrowserModule,
     AuthModule,
-    AppRoutingModule,
     SharedModule,
     SearchModule,
     PlaylistsModule,
+    AppRoutingModule,
   ],
   providers: [
     {
