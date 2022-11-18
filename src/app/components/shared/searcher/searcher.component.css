@@ -26,17 +26,26 @@
 }
 
 #track-searcher {
-  width: 325px;
-  height: 55px;
+  width: 20.3125rem;
+  height: 3.4375rem;
   border-radius: 10px;
   border: none;
   box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2.5rem;
 }
 
 #track-searcher:focus {
   outline: none;
 }
+
+#searcher-icon {
+  position: absolute;
+  left: 0.625rem;
+  top: 1.09375rem;
+  color: grey;
+}
+
+/* media queries and keyframes */
 
 @media only screen and (max-width: 25em) {
   #track-searcher {
