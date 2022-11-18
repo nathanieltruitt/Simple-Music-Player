@@ -1,1 +1,41 @@
-<nav class="side-nav"></nav>
+<nav class="side-nav">
+  <img
+    src="../../../../assets/images/Simple.png"
+    alt="Simple Music Player Logo"
+    class="side-nav-logo"
+  />
+  <ul class="side-nav-list">
+    <li class="mb-3">
+      <app-nav-item
+        routerLink="/search"
+        routerLinkActive="nav-item-content__active"
+        name="Home"
+        [icon]="faHouse"
+      ></app-nav-item>
+    </li>
+    <li class="mb-3">
+      <app-nav-item
+        routerLink="/playlists"
+        routerLinkActive="nav-item-content__active"
+        name="Playlists"
+        [icon]="faList"
+      ></app-nav-item>
+    </li>
+    <li class="mb-3">
+      <app-nav-item
+        (click)="onLogout()"
+        routerLinkActive="nav-item-content__active"
+        name="Logout"
+        [icon]="faRightFromBracket"
+      ></app-nav-item>
+    </li>
+  </ul>
+  <ul class="side-nav-list">
+    <h2 style="color: darkgray" class="h6">Playlists</h2>
+    <ng-container *ngIf="getPlaylists() | async as playlists">
+      <li *ngFor="let playlist of playlists" class="mb-2">
+        <app-nav-playlist [playlist]="playlist"></app-nav-playlist>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

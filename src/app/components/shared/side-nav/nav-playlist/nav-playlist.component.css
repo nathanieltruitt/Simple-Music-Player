@@ -1,0 +1,7 @@
+:host {
+  cursor: pointer;
+}
+
+#nav-playlist-name:hover {
+  color: var(--pink-100);
+}

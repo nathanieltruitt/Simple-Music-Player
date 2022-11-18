@@ -64,7 +64,6 @@ export class PlaylistService implements OnDestroy {
   }
 
   getPlaylists(user: User) {
-    console.log(user);
     return this.http.get<{ playlists: Playlist[] }>(
       `https://codelabs-cc55a-default-rtdb.firebaseio.com/playlists/${user.id}.json?auth=${user.token}`
     );

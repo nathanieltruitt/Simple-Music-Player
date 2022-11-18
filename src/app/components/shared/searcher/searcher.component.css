@@ -21,16 +21,17 @@
 .searcher-form-group {
   position: relative;
   z-index: 3;
-  float: right;
+  float: left;
   margin-top: 10px;
 }
 
 #track-searcher {
-  width: 400px;
-  height: 45px;
+  width: 325px;
+  height: 55px;
   border-radius: 10px;
-  border: 1px solid #ababab;
-  margin-bottom: 0.5rem;
+  border: none;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
+  padding: 1rem;
 }
 
 #track-searcher:focus {
