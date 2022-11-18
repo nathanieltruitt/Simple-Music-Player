@@ -12,6 +12,7 @@ import {
   of,
 } from 'rxjs';
 import { Track } from 'src/app/models/track.interface';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { QueueService } from 'src/app/services/component-communication/queue.service';
 import { SelectedTrackService } from 'src/app/services/component-communication/selected-track.service';
 import { TrackSearchService } from 'src/app/services/data-access/track-search.service';
@@ -29,6 +30,7 @@ export class SearcherComponent implements OnInit {
   results$!: Observable<Track[]> | undefined;
   resultsErr$!: Observable<HttpErrorResponse>;
   loading$ = new BehaviorSubject<boolean>(false);
+  faMagnifyingGlass = faMagnifyingGlass;
 
   constructor(
     private trackSearchService: TrackSearchService,

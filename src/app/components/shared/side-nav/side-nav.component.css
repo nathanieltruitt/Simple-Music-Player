@@ -11,7 +11,7 @@
   left: 0;
   position: fixed;
   z-index: 1;
-  background-color: #1a1c1e;
+  background-color: #fff;
   overflow-x: hidden;
   /* transition: 0.5s; */
 }
@@ -20,8 +20,20 @@
   .side-nav {
     top: 0;
     height: 100%;
-    width: 4.125rem;
+    width: 268px;
     padding-top: 20px;
+  }
+
+  .side-nav-logo {
+    width: auto;
+    height: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .side-nav-list {
+    width: 75%;
+    margin: 1rem auto 5rem auto;
   }
 }
 
@@ -69,7 +81,4 @@
   background-color: #373b43;
   border-radius: 15px;
   transition: all ease 0.5s;
-}
-
-@media only screen and (min-width: 43.75em) {
 }

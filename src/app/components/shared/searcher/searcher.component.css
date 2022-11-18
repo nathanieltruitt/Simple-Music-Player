@@ -21,21 +21,31 @@
 .searcher-form-group {
   position: relative;
   z-index: 3;
-  float: right;
+  float: left;
   margin-top: 10px;
 }
 
 #track-searcher {
-  width: 400px;
-  height: 45px;
+  width: 20.3125rem;
+  height: 3.4375rem;
   border-radius: 10px;
-  border: 1px solid #ababab;
-  margin-bottom: 0.5rem;
+  border: none;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
+  padding: 1rem 1rem 1rem 2.5rem;
 }
 
 #track-searcher:focus {
   outline: none;
 }
+
+#searcher-icon {
+  position: absolute;
+  left: 0.625rem;
+  top: 1.09375rem;
+  color: grey;
+}
+
+/* media queries and keyframes */
 
 @media only screen and (max-width: 25em) {
   #track-searcher {

@@ -12,11 +12,16 @@
         >{{ resultsErr.message }}</span
       >
       <div class="form-group searcher-form-group">
+        <fa-icon
+          id="searcher-icon"
+          class="fa-lg"
+          [icon]="faMagnifyingGlass"
+        ></fa-icon>
         <input
           type="text"
           id="track-searcher"
           name="track-searcher"
-          placeholder="search for tracks"
+          placeholder="Search"
           [(ngModel)]="searcherValue"
           (keyup)="onSearch(searcherValue)"
         />

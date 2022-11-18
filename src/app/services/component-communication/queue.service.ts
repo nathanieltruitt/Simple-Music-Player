@@ -51,6 +51,11 @@ export class QueueService {
     }
   }
 
+  clear() {
+    this._queue = [];
+    this.queue$.next(this._queue);
+  }
+
   get queue() {
     return this._queue.slice();
   }
