@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { PlaylistService } from 'src/app/services/data-access/playlist.service';
+import { map, Observable } from 'rxjs';
+import { ArtistService } from 'src/app/services/data-access/artist.service';
 
 @Component({
   selector: 'app-top-artists',
@@ -8,22 +8,19 @@ import { PlaylistService } from 'src/app/services/data-access/playlist.service';
   styleUrls: ['./top-artists.component.css'],
 })
 export class TopArtistsComponent implements OnInit {
-  playlistSub!: Subscription;
   // TODO: need model for artists
-  artists: any[] = [];
+  // TODO: needs to scroll when list is too large
+  artists$!: Observable<any> | undefined;
 
-  constructor(private playlistService: PlaylistService) {}
+  constructor(private artistService: ArtistService) {}
 
   ngOnInit(): void {
-    this.playlistSub = this.playlistService.playlists$.subscribe({
-      next: (playlists) => {
-        for (let playlist of playlists) {
-          for (let track of playlist.tracks) {
-            this.artists = [...this.artists, ...track.artists];
-          }
-        }
-        console.log(this.artists);
-      },
+    this.getArtists().then((obs) => {
+      this.artists$ = obs;
     });
+  }
+
+  getArtists() {
+    return this.artistService.getArtists();
   }
 }
