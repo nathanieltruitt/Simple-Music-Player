@@ -1,0 +1,13 @@
+<h1 class="mb-4" style="font-size: 2rem">Top Artists</h1>
+<div class="top-artists-container">
+  <ng-container *ngIf="artists$ | async as artists">
+    <div class="artist" *ngFor="let artist of artists.artists">
+      <img
+        class="artist-img"
+        [src]="artist.images[0].url"
+        [alt]="artist.name + ' Image'"
+      />
+      <h4>{{ artist.name }}</h4>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,11 @@
+.artist-img {
+  height: auto;
+  width: 15.625rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.top-artists-container {
+  display: flex;
+  gap: 2rem;
+}
