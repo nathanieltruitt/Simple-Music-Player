@@ -13,7 +13,10 @@ const routes: Routes = [
   },
   {
     path: 'playlists',
-    component: PlaylistsComponent,
+    loadChildren: () =>
+      import('src/app/components/playlists/playlists.module').then(
+        (m) => m.PlaylistsModule
+      ),
   },
   {
     path: 'login',
