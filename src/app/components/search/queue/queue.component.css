@@ -1,8 +1,17 @@
 .smp-container {
-  background-color: #fff;
-  padding: 1rem 1rem 1rem 1.5rem;
-  border-radius: 10px;
   height: 27.425rem;
+}
+
+.smp-queue {
+  width: 100%;
+  height: 100%;
+}
+
+.queue-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(97, 97, 97, 0.1);
+  border-radius: 20px;
 }
 
 /* .queue-row:hover {
@@ -15,11 +24,22 @@
 
 .smp-queue-grid {
   display: grid;
-  grid-template-columns: 10% 1fr 1fr 1fr 1fr;
+  grid-template-columns: 10% 10% 10% 1fr 1fr 1fr 1fr;
+  background-color: #fff;
+  height: 5rem;
+  padding-left: 10px;
+  padding-right: 20px;
+  border-radius: 15px;
 }
 
 .smp-queue-row {
   align-items: center;
+}
+
+.song-preview-img {
+  width: 50px;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* .row-group {
@@ -45,17 +65,25 @@
   font-size: 0.8rem;
 }
 
-@keyframes text-animation {
-
-}
-
 /* Play button */
-.play-select {
-  border-radius: 50%;
+.play-select:hover {
+  cursor: pointer;
 }
 
-/* class is applied if this is the current song playing */
-.playing {
-  box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.5);
-  transition: box-shadow ease 0.3s;
+/* text scroll animation if text overflows */
+.auto-scroll:hover {
+  position: relative;
+  animation-name: autoscroll;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes autoscroll {
+  from {
+    right: 0;
+  }
+  to {
+    right: 100%;
+  }
 }

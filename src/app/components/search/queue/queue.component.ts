@@ -56,6 +56,10 @@ export class QueueComponent implements OnInit, OnDestroy {
     return this.currentTrack;
   }
 
+  isOverflowing(elem: HTMLElement) {
+    return elem.scrollWidth > elem.clientWidth;
+  }
+
   ngOnDestroy(): void {
     this.currentTrackSub.unsubscribe();
   }
